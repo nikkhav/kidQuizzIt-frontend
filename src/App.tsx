@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 const Home = lazy(() => import("./pages/Home"));
+const SinglePage = lazy(() => import("./pages/SinglePage"));
 
 type AppProps = {
   load?: boolean;
@@ -14,6 +15,10 @@ const App: React.FC<AppProps> = ({ load }) => {
     {
       path: "/",
       element: <Home />,
+    },
+    {
+      path: "/single-page",
+      element: <SinglePage />,
     },
   ];
   function disableScroll() {
