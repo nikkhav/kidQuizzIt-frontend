@@ -2,7 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import React, { lazy, Suspense } from "react";
 import { connect } from "react-redux";
-const Home = lazy(() => import("./pages/home/Home"));
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+const Home = lazy(() => import("./pages/Home"));
 
 type AppProps = {
   load?: boolean;
@@ -24,8 +26,27 @@ const App: React.FC<AppProps> = ({ load }) => {
   function enableScroll() {
     window.onscroll = null;
   }
+  const colors: string[] = [
+    "#98CBEB",
+    "#8F3945",
+    "#EF7B45",
+    "#6EB257",
+    "#1d1d1b",
+    "#fff",
+  ];
+  const errorColors: string[] = ["#FF0000", "#DC143C", "#FFA500", "#800000"];
+  const warningColors: string[] = ["#FFFF00", "#FFD700", "#FFC107", "#FFA500"];
+  const successColors: string[] = [
+    "#00FF00",
+    "#008000",
+    "#50C878",
+    "#008080",
+    "#008489",
+  ];
+
   return (
     <>
+      <Header />
       <Routes>
         {routes.map((t) => (
           <Route
@@ -39,6 +60,7 @@ const App: React.FC<AppProps> = ({ load }) => {
           />
         ))}
       </Routes>
+      <Footer />
     </>
   );
 };
