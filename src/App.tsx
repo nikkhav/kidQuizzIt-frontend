@@ -8,15 +8,22 @@ const Home = lazy(() => import("./pages/Home"));
 const SinglePage = lazy(() => import("./pages/SinglePage"));
 const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
+const Contacts = lazy(() => import("./pages/Contacts"));
 
 type AppProps = {
   load?: boolean;
 };
+type ComponentType = React.FC<{}>;
+
 const App: React.FC<AppProps> = ({ load }) => {
   const routes = [
     {
       path: "/",
       element: <Home />,
+    },
+    {
+      path: "/contacts",
+      element: <Contacts />,
     },
     {
       path: "/privacy/:name",
