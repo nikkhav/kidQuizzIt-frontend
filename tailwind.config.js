@@ -21,7 +21,8 @@ export default {
       xl: "1440px",
     },
     colors: {
-      green: "#009900",
+      green: "#00a900",
+      darkGreen: "#008900",
       yellow: "#f9c126",
       black: "#1d1d1b",
       white: "#fff",

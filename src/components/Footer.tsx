@@ -25,9 +25,9 @@ const Footer: React.FC = () => {
   ];
   return (
     <>
-      <div className="bg-green w-full pb-7">
+      <div className="w-full h-52 bg-green">
         <Wrapper>
-          <div className="w-full h-52 pt-10 pb-0 flex items-start justify-between">
+          <div className="w-full h-52 bg-green pt-10 pb-0 flex items-start justify-between">
             <div className="w-1/4 h-full flex items-start justify-start">
               <Link to="/">
                 <h2 className="text-5xl text-yellow font-main font-medium ">
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
             <ul className="w-1/4 h-full flex-col items-start justify-start space-x-20">
               <li className="w-full m-0 mb-3">
                 <Link
-                  to="#"
+                  to="/privacy/policy"
                   className="w-full text-left  m-0 text-xl text-white font-main font-medium hover:text-yellow transition-all duration-300"
                 >
                   Privacy and Policy
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="w-full  m-0">
                 <Link
-                  to="#"
+                  to="/privacy/terms"
                   className="w-full text-left  m-0 text-xl text-white font-main font-medium hover:text-yellow transition-all duration-300"
                 >
                   Terms and condisions
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
                     to="tel:79999999999"
                     className="w-full text-left  m-0 text-xl text-white font-main font-medium hover:text-yellow transition-all duration-300 flex justify-start items-center space-x-2"
                   >
-                    <FaPhoneAlt className="text-lg mr-2"/> +7-999-999-99-99
+                    <FaPhoneAlt className="text-lg mr-2" /> +7-999-999-99-99
                   </Link>
                 </li>
                 <li className="w-full m-0 mb-1">
@@ -85,16 +85,19 @@ const Footer: React.FC = () => {
                     to="mailto:fakemail@gmail.com"
                     className="w-full text-left  m-0 text-xl text-white font-main font-medium hover:text-yellow transition-all duration-300 flex justify-start items-center space-x-2"
                   >
-                    <AiOutlineMail className="text-xl mr-2"/> fakemail@gmail.com
+                    <AiOutlineMail className="text-xl mr-2" />{" "}
+                    fakemail@gmail.com
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
         </Wrapper>
-        <div className="w-full h-1 bg-yellow mb-5"></div>
+      </div>
+      <div className="w-full h-1 bg-yellow"></div>
+      <div className="w-full h-14 bg-darkGreen">
         <Wrapper>
-          <div className="w-full flex justify-end items-center px-10">
+          <div className="w-full bg-darkGreen flex justify-end items-center pt-4">
             <Link
               to=""
               className=" font-main text-lg text-white hover:text-yellow transition-all duration-300"

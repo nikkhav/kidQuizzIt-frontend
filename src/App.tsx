@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 const Home = lazy(() => import("./pages/Home"));
 const SinglePage = lazy(() => import("./pages/SinglePage"));
+const About = lazy(() => import("./pages/About"));
+const Privacy = lazy(() => import("./pages/Privacy"));
 
 type AppProps = {
   load?: boolean;
@@ -17,8 +19,16 @@ const App: React.FC<AppProps> = ({ load }) => {
       element: <Home />,
     },
     {
+      path: "/privacy/:name",
+      element: <Privacy />,
+    },
+    {
       path: "/single-page",
       element: <SinglePage />,
+    },
+    {
+      path: "/about",
+      element: <About />,
     },
   ];
   function disableScroll() {
