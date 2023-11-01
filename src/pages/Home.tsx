@@ -79,10 +79,10 @@ const Home: React.FC = () => {
   ];
   return (
     <>
-      <SwiperComponent dataChanges={dataChanges} title="FIND THE DIFFERENCES" />
+      {/* <SwiperComponent dataChanges={dataChanges} title="FIND THE DIFFERENCES" />
       <SwiperComponent data={data} title="BRAIN BOOSTERS" />
       <SwiperComponent data={data} title={null} />
-      <ScrollTop />
+      <ScrollTop /> */}
     </>
   );
 };

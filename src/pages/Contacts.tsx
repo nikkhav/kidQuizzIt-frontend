@@ -55,28 +55,13 @@ function Contacts() {
               </div>
             </label>
           </form>
-          <div className="w-1/3 pl-8 flex-col items-start justify-start">
-            <div className="flex-col items-start justify-start w-full mb-10">
-              <h2 className="mb-5 text-3xl font-medium font-main text-black">
-                Phone:
-              </h2>
-              <div >
-                <Link to="" className="font-main text-black text-2xl flex justify-start items-center transition-all duration-300 hover:text-yellow">
-                  <FaPhoneAlt className="text-xl mr-2" />
-                  +7-999-999-99-99
-                </Link>
-              </div>
-            </div>
-            <div className="flex-col items-start justify-start w-full">
-              <h2 className="mb-5 text-3xl font-medium font-main text-black">
-                Email:
-              </h2>
-              <div >
-                <Link to="" className="font-main text-black text-2xl flex justify-start items-center transition-all duration-300 hover:text-yellow">
-                  <AiOutlineMail className="text-2xl mr-2" /> fakemail@gmail.com
-                </Link>
-              </div>
-            </div>
+          <div className="w-1/3 pl-8 flex-col items-center text-center justify-start">
+            <h2 className="font-main font-medium text-4xl text-black mb-5">
+              WE CAN HELP!
+            </h2>
+            <p className="font-main font-normal text-2xl text-black">
+              Our team of experts is on hand to answer your questions
+            </p>
           </div>
         </div>
       </div>

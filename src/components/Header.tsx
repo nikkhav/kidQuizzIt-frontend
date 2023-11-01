@@ -7,6 +7,8 @@ import { useClickOutSide } from "../hooks/useClickOutSide";
 import { useRef } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
+import { HiMenu } from "react-icons/hi";
+import { FaXmark } from "react-icons/fa6";
 
 type navPagesType = {
   page: string;
@@ -14,7 +16,6 @@ type navPagesType = {
 };
 const Header = () => {
   const dropRef = useRef(null);
-
   const [drop, setDrop] = useState<boolean>(false);
   const navPages: navPagesType[] = [
     {
@@ -33,9 +34,10 @@ const Header = () => {
   useClickOutSide(dropRef, () => {
     setDrop(false);
   });
+  const [burger, setBurger] = useState<boolean>(true);
   return (
     <>
-      <div className="w-full h-12 bg-darkGreen">
+      <div className="w-full h-12 bg-darkGreen hidden md:block">
         <Wrapper>
           <div className="w-full h-full flex justify-end items-center space-x-3 pt-0.5">
             <ul className="space-x-20 h-6 pt-6 flex items-center justify-end">
@@ -59,14 +61,17 @@ const Header = () => {
           </div>
         </Wrapper>
       </div>
-      <div className="w-full h-1 bg-yellow"></div>
-      <div className="w-full  h-24 bg-green mb-20">
+      <div className="w-full h-1 bg-yellow  hidden md:block"></div>
+      <div className="w-full  h-16 md:h-24 bg-green mb-20">
         <Wrapper>
-          <header className=" mt-auto h-24 flex justify-between items-center ">
-            <Link to="/" className="text-3xl text-yellow font-main font-medium">
+          <header className=" mt-auto h-16 md:h-24 flex justify-between items-center ">
+            <Link
+              to="/"
+              className="text-2xl md:text-2xl text-yellow font-main font-medium"
+            >
               KidQuizzIt
             </Link>
-            <nav className="flex justify-end space-x-6  relative z-0">
+            <nav className="justify-end space-x-6  relative z-0 hidden md:flex">
               {navPages.map((item: navPagesType, index: number) => {
                 if (index != 0) {
                   return (
@@ -89,9 +94,7 @@ const Header = () => {
                         "flex cursor-pointer hover:border-b-2 hover:border-yellow border-b-0 items-center text-lg text-white font-main font-medium hover:text-yellow transition-all duration-300 "
                       }
                     >
-                      <p >
-                        {item.page}
-                      </p>
+                      <p>{item.page}</p>
                       <RiArrowDropDownLine className="text-3xl" />
                     </div>
                   );
@@ -136,9 +139,106 @@ const Header = () => {
                 </AnimatePresence>
               )}
             </nav>
+            <HiMenu
+              onClick={() => setBurger(true)}
+              className="block md:hidden text-4xl font-main font-bold text-yellow"
+            />
           </header>
         </Wrapper>
       </div>
+      {burger && (
+        <AnimatePresence>
+          <motion.div
+            initial={{ y: "-100%" }}
+            animate={{ y: "0" }}
+            exit={{ y: "-100%" }}
+            className="absolute transition-transform duration-500 top-0 left-0 w-full h-screen bg-green flex-col justify-between items-start p-5 pb-8"
+          >
+            <div className="h-full flex flex-col justify-between">
+              <Link
+                to="/"
+                className="text-4xl text-yellow font-main font-medium text-center flex justify-center my-3"
+              >
+                KidQuizzIt
+              </Link>
+              <ul className="grid grid-cols-2 gap-4 w-full justify-center items-center">
+                <li className="text-center">
+                  <Link
+                    to="#"
+                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
+                  >
+                    About Us
+                  </Link>
+                </li>
+                <li className="text-center">
+                  <Link
+                    to="#"
+                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
+                  >
+                    Contacts
+                  </Link>
+                </li>
+                <li className="text-center">
+                  <Link
+                    to="#"
+                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
+                  >
+                    Catalog
+                  </Link>
+                </li>
+                <li className="text-center">
+                  {" "}
+                  <Link
+                    to="#"
+                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
+                  >
+                    Catalog
+                  </Link>
+                </li>
+                <li className="text-center">
+                  <Link
+                    to="#"
+                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
+                  >
+                    Catalog
+                  </Link>
+                </li>
+                <li className="text-center">
+                  <Link
+                    to="#"
+                    className="text-center text-2xl sm:text-3xll font-main text-white font-normal"
+                  >
+                    Catalog
+                  </Link>
+                </li>
+              </ul>
+              <ul className="w-full flex flex-col items-center  justify-center sm:flex-row">
+                <li className="w-full">
+                  <Link
+                    to="tel:79999999999"
+                    className="w-full text-left  m-0 text-xl text-white font-main font-medium hover:text-yellow transition-all duration-300 flex justify-center sm:justify-start items-center space-x-2"
+                  >
+                    <FaPhoneAlt className="text-lg mr-2" /> +7-999-999-99-99
+                  </Link>
+                </li>
+                <li className="w-full">
+                  <Link
+                    to="mailto:fakemail@gmail.com"
+                    className="w-full   m-0 text-xl text-white font-main font-medium hover:text-yellow transition-all duration-300 flex justify-center sm:justify-end items-center mt-4 sm:mt-0 space-x-2"
+                  >
+                    <AiOutlineMail className="text-xl mr-2" />{" "}
+                    fakemail@gmail.com
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <FaXmark
+              className="absolute z-10 top-3 right-3 sm:top-5 sm:right-5 text-3xl sm:text-4xl text-white"
+              onClick={() => setBurger(false)}
+            />
+          </motion.div>
+        </AnimatePresence>
+      )}
     </>
   );
 };
