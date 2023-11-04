@@ -7,17 +7,10 @@ import swiperImg1 from "../images/swiper1.avif";
 import Wrapper from "./Wrapper";
 import "swiper/css/navigation";
 import { Link } from "react-router-dom";
+import { dataItem } from "../types/dataItem";
+import { dataChanges } from "../types/dataChanges";
 
-type dataItem = {
-  id: number;
-  img: string;
-  text: string;
-};
-type dataChanges = {
-  id: number;
-  img1: string;
-  img2: string;
-};
+
 type MySwiperProps = {
   data?: dataItem[];
   dataChanges?: dataChanges[];

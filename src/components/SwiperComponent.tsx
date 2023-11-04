@@ -1,16 +1,8 @@
 import React from "react";
 import MySwiper from "./Swiper";
+import { dataItem } from "../types/dataItem";
+import { dataChanges } from "../types/dataChanges";
 
-type dataItem = {
-  id: number;
-  img: string;
-  text: string;
-};
-type dataChanges = {
-  id: number;
-  img1: string;
-  img2: string;
-};
 type SwiperComponentProps = {
   title: string | null;
   data?: dataItem[];
