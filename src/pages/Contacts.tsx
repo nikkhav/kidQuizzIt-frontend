@@ -8,12 +8,15 @@ function Contacts() {
   return (
     <Wrapper>
       <div className="w-full flex-col items-center justify-center">
-        <h1 className="w-full my-16 mx-auto text-center text-7xl font-main font-semibold">
-          Contact us
-        </h1>
-        <div className="w-full flex justify-between items-start mt-6 mb-16">
-          <form className="w-2/3 flex justify-start flex-wrap items-start bg-darkGreen p-5 rounded-3xl">
-            <label htmlFor="" className="w-1/2 pr-8">
+        <div className="w-full flex-col items-center justify-center mb-20">
+          <h2 className="items-center flex-col text-center text-black font-main font-bold text-5xl sm:text-7xl md:text-7xl lg:text-7xl">
+            Contact us
+            <div className="w-28 h-1 bg-green mx-auto mt-3"></div>
+          </h2>
+        </div>
+        <div className="w-full flex flex-col-reverse lg:flex-row justify-center lg:items-start lg:justify-start items-center mt-6 mb-16">
+          <form className="w-full lg:w-3/5 lg:mr-3 flex justify-start flex-wrap items-start bg-darkGreen p-5 rounded-3xl">
+            <label htmlFor="" className="w-full md:w-1/2 md:pr-3 ">
               <p className="font-main font-medium text-white text-xl mb-2">
                 First Name
               </p>
@@ -22,7 +25,7 @@ function Contacts() {
                 className="w-full border-2 border-white h-12 rounded-lg px-4 font-main font-normal text-black text-lg focus:outline-none focus:border-yellow "
               />
             </label>
-            <label htmlFor="" className="w-1/2 pr-8">
+            <label htmlFor="" className="w-full md:w-1/2 md:pl-3 mt-7 md:mt-0 mb-3">
               <p className="font-main font-medium text-white text-xl mb-2">
                 Last Name
               </p>
@@ -31,7 +34,7 @@ function Contacts() {
                 className="w-full border-2 border-white h-12 rounded-lg px-4 font-main font-normal text-black text-lg focus:outline-none focus:border-yellow"
               />
             </label>
-            <label htmlFor="" className="w-full mt-5 mb-1 pr-8">
+            <label htmlFor="" className="w-full md:w-1/2 md:pr-3 mt-5 mb-3">
               <p className="font-main font-medium text-white text-xl mb-2">
                 Email address
               </p>
@@ -40,7 +43,16 @@ function Contacts() {
                 className="w-full border-2 border-white h-12 rounded-lg px-4 font-main font-normal text-black text-lg focus:outline-none focus:border-yellow"
               />
             </label>
-            <label htmlFor="" className="w-full my-7 pr-8">
+            <label htmlFor="" className="w-full md:w-1/2 md:pl-3 mt-5 mb-3">
+              <p className="font-main font-medium text-white text-xl mb-2">
+                Phone number
+              </p>
+              <input
+                type="phone"
+                className="w-full border-2 border-white h-12 rounded-lg px-4 font-main font-normal text-black text-lg focus:outline-none focus:border-yellow"
+              />
+            </label>
+            <label htmlFor="" className="w-full my-7">
               <p className="font-main font-medium text-white text-xl mb-2">
                 Message
               </p>
@@ -55,11 +67,11 @@ function Contacts() {
               </div>
             </label>
           </form>
-          <div className="w-1/3 pl-8 flex-col items-center text-center justify-start">
-            <h2 className="font-main font-medium text-4xl text-black mb-5">
+          <div className="w-full lg:w-2/5 flex-col lg:pl-3 items-center justify-center text-center mb-10">
+            <h2 className="font-main font-medium text-center text-3xl lg:text-5xl text-black mb-2 lg:mb-5 flex justify-center items-center">
               WE CAN HELP!
             </h2>
-            <p className="font-main font-normal text-2xl text-black">
+            <p className="font-main font-normal text-center text-xl lg:text-2xl text-black flex justify-center items-center">
               Our team of experts is on hand to answer your questions
             </p>
           </div>
