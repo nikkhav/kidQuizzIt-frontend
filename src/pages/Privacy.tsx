@@ -7,21 +7,21 @@ const Privacy = () => {
   const name = params.name == "policy" ? "policy" : "terms";
   return (
     <Wrapper>
-      <div className="w-full my-20 flex justify-between items-start">
-        <div className="w-1/3 pr-4">
+      <div className="w-full  my-20 flex flex-col lg:flex-row justify-between items-start">
+        <div className="w-full lg:w-2/5 pr-4 mb-16">
           <img src={privacyImg} alt="" className="w-full" />
         </div>
-        <div className="w-2/3">
-          <h2 className="font-main font-medium text-black text-6xl">
+        <div className="w-full lg:w-3/5">
+          <h2 className="font-main font-medium text-black text-4xl sm:text-5xl">
             {name == "terms" ? "TERMS OF USE" : "PRIVACY POLICY"}
           </h2>
-          <p className="font-main font-normal text-black text-xl mb-7 mt-1">
+          <p className="font-main font-normal text-black  text-lg mb-7 mt-2">
             Last Modified: <span className="text-yellow">09/20/2023</span>
           </p>
-          <h3 className="font-main font-medium text-black text-2xl mb-10">
+          <h3 className="font-main font-medium text-black text-center text-2xl sm:text-4xl mb-7">
             {name == "terms" ? "SCOPE OF THIS TERMS" : "SCOPE OF THIS POLICY"}
           </h3>
-          <p className="font-main font-normal text-black text-xl mb-5">
+          <p className="font-main font-normal text-black text-sm sm:text-xl mb-5">
             This privacy policy describes the processing of information provided
             or collected on the sites and applications where this privacy policy
             is posted, whether on our digital properties or on applications we
@@ -35,7 +35,7 @@ const Privacy = () => {
             practices, or regions. Those terms are to be read in conjunction
             with this policy.
           </p>
-          <p className="font-main font-normal text-black text-xl mb-5">
+          <p className="font-main font-normal text-black text-sm sm:text-xl mb-5">
             Please keep in mind that when you provide information to us on a
             third-party site or platform (for example, via our applications),
             the information you provide may be separately collected by the

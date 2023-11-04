@@ -9,6 +9,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { HiMenu } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
+import { disableScroll, enableScroll } from "../hooks/scrool";
 
 type navPagesType = {
   page: string;
@@ -35,6 +36,14 @@ const Header = () => {
     setDrop(false);
   });
   const [burger, setBurger] = useState<boolean>(false);
+  const burgerOpen = () => {
+    setBurger(true);
+    disableScroll();
+  };
+  const closeBurger = () => {
+    setBurger(false);
+    enableScroll();
+  };
   return (
     <>
       <div className="w-full h-12 bg-darkGreen hidden md:block">
@@ -140,7 +149,7 @@ const Header = () => {
               )}
             </nav>
             <HiMenu
-              onClick={() => setBurger(true)}
+              onClick={burgerOpen}
               className="block md:hidden text-4xl font-main font-bold text-yellow"
             />
           </header>
@@ -152,7 +161,7 @@ const Header = () => {
             initial={{ y: "-100%" }}
             animate={{ y: "0" }}
             exit={{ y: "-100%" }}
-            className="absolute transition-transform duration-500 top-0 left-0 w-full h-screen bg-green flex-col justify-between items-start p-5 pb-8"
+            className="absolute transition-transform duration-500 top-0 left-0 w-full h-screen bg-green flex-col justify-between items-start p-5 pb-8 z-30"
           >
             <div className="h-full flex flex-col justify-between">
               <Link
@@ -233,8 +242,8 @@ const Header = () => {
               </ul>
             </div>
             <FaXmark
-              className="absolute z-10 top-3 right-3 sm:top-5 sm:right-5 text-3xl sm:text-4xl text-white"
-              onClick={() => setBurger(false)}
+              className="absolute z-50 top-3 right-3 sm:top-5 sm:right-5 text-3xl sm:text-4xl text-white"
+              onClick={closeBurger}
             />
           </motion.div>
         </AnimatePresence>

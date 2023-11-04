@@ -38,16 +38,7 @@ const App: React.FC<AppProps> = ({ load }) => {
       element: <About />,
     },
   ];
-  function disableScroll() {
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-    window.onscroll = function () {
-      window.scrollTo(scrollLeft, scrollTop);
-    };
-  }
-  function enableScroll() {
-    window.onscroll = null;
-  }
+
   const colors: string[] = [
     "#98CBEB",
     "#8F3945",

@@ -49,11 +49,13 @@ body {
   height: 400px !important;
   top: 22px !important;
   width: 40px !important;
+  pointer-events: all !important;
 }
 .swiper-button-next::after,
 .swiper-button-prev::after {
   z-index: 9999 !important;
   color: rgb(0 153 0 / var(--tw-bg-opacity));
+  pointer-events: all !important;
 }
 .swiper-button-next {
   right: 0 !important;
@@ -84,4 +86,22 @@ body {
   border: 1px solid #f9c126;
   outline: none;
   border-radius: 4px;
+}
+@media screen and (max-width: 768px) {
+  .scrollTop {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .scrollTop {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .scrollTop {
+    bottom: 15px;
+    right: 15px;
+  }
 }
