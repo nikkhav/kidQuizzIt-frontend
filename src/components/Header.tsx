@@ -34,7 +34,7 @@ const Header = () => {
   useClickOutSide(dropRef, () => {
     setDrop(false);
   });
-  const [burger, setBurger] = useState<boolean>(true);
+  const [burger, setBurger] = useState<boolean>(false);
   return (
     <>
       <div className="w-full h-12 bg-darkGreen hidden md:block">
@@ -67,7 +67,7 @@ const Header = () => {
           <header className=" mt-auto h-16 md:h-24 flex justify-between items-center ">
             <Link
               to="/"
-              className="text-2xl md:text-2xl text-yellow font-main font-medium"
+              className="text-2xl md:text-4xl text-yellow font-main font-medium"
             >
               KidQuizzIt
             </Link>

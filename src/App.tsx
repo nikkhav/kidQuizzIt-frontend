@@ -82,7 +82,7 @@ const App: React.FC<AppProps> = ({ load }) => {
           />
         ))}
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

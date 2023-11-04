@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -22,13 +22,43 @@ type MySwiperProps = {
   data?: dataItem[];
   dataChanges?: dataChanges[];
 };
+type CardCountMap = {
+  [key: string]: number;
+};
 const MySwiper: React.FC<MySwiperProps> = ({ data, dataChanges }) => {
+  const cardCounts: CardCountMap = {
+    '(max-width: 400px)': 1,   
+    '(max-width: 480px)': 2,  
+    '(max-width: 991px)': 3,   
+    '(min-width: 992px)': 4, 
+  };
+
+  const [currentCardCount, setCurrentCardCount] = useState<number>(4); 
+
+  useEffect(() => {
+    const handleMediaChange = () => {
+      for (const mediaQuery in cardCounts) {
+        if (window.matchMedia(mediaQuery).matches) {
+          setCurrentCardCount(cardCounts[mediaQuery]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('resize', handleMediaChange);
+
+    handleMediaChange();
+
+    return () => {
+      window.removeEventListener('resize', handleMediaChange);
+    };
+  }, []);
   return (
     <>
       {data && (
         <Wrapper>
           <Swiper
-            slidesPerView={4}
+            slidesPerView={currentCardCount}
             spaceBetween={30}
             className="mySwiper"
             navigation={true}
@@ -50,7 +80,7 @@ const MySwiper: React.FC<MySwiperProps> = ({ data, dataChanges }) => {
       {dataChanges && (
         <Wrapper>
           <Swiper
-            slidesPerView={4}
+            slidesPerView={currentCardCount}
             spaceBetween={30}
             className="mySwiper"
             navigation={true}

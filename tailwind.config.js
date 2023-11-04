@@ -18,7 +18,7 @@ export default {
       sm: "480px",
       md: "768px",
       lg: "1024px",
-      xl: "1440px",
+      xl: "1366px",
     },
     colors: {
       green: "#00a900",
