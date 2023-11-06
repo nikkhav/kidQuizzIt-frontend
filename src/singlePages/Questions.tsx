@@ -447,10 +447,14 @@ const Questions = () => {
   return (
     <>
       <Wrapper>
-        <h1 className="w-full my-16 mx-auto text-center text-7xl font-main font-semibold">
+        <h1 className="w-full my-16 sm:text-5xl md:text-6xl mx-auto text-center text-4xl font-main font-semibold">
           {questionsItem.title}
+          <div className="w-28 h-1 bg-green mx-auto mt-3"></div>
         </h1>
         <QuestionsContainer questions={questionsItem.questions} />
+        <div className="w-full flex items-center justify-center mt-8 mb-16 md:mt-16">
+        <button className="bg-darkGreen border-white border-2 rounded-lg py-2 px-4 md:py-4 md:px-8 font-main font-medium text-white text-lg md:text-xl transition-all duration-300 hover:bg-white hover:text-darkGreen hover:border-darkGreen">CHECK ANSWERS</button>
+        </div>
       </Wrapper>
     </>
   );

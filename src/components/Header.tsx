@@ -71,7 +71,7 @@ const Header = () => {
         </Wrapper>
       </div>
       <div className="w-full h-1 bg-yellow  hidden md:block"></div>
-      <div className="w-full  h-16 md:h-24 bg-green mb-20">
+      <div className="w-full  h-16 md:h-24 bg-green mb-10 md:mb-16">
         <Wrapper>
           <header className=" mt-auto h-16 md:h-24 flex justify-between items-center ">
             <Link

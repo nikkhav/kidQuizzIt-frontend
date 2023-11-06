@@ -42,6 +42,6 @@ export default {
         bold: "700",
       },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/forms")],
   },
 };

@@ -25,7 +25,10 @@ function Contacts() {
                 className="w-full border-2 border-white h-12 rounded-lg px-4 font-main font-normal text-black text-lg focus:outline-none focus:border-yellow "
               />
             </label>
-            <label htmlFor="" className="w-full md:w-1/2 md:pl-3 mt-7 md:mt-0 mb-3">
+            <label
+              htmlFor=""
+              className="w-full md:w-1/2 md:pl-3 mt-7 md:mt-0 mb-3"
+            >
               <p className="font-main font-medium text-white text-xl mb-2">
                 Last Name
               </p>
@@ -60,12 +63,12 @@ function Contacts() {
                 name=""
                 className="w-full h-32 p-4  border-2 border-white rounded-lg font-main font-normal text-black text-lg focus:outline-none focus:border-yellow"
               ></textarea>
-              <div className="w-full flex items-center justify-center mt-7">
-                <button className="bg-darkGreen border-white border-2 rounded-lg py-2 px-4 font-main font-medium text-white text-lg transition-all duration-300 hover:bg-white hover:text-darkGreen">
-                  Send message
-                </button>
-              </div>
             </label>
+            <div className="w-full flex items-center justify-center mt-0 mb-3">
+              <button className="bg-darkGreen border-white border-2 rounded-lg py-2 px-4 font-main font-medium text-white text-lg transition-all duration-300 hover:bg-white hover:text-darkGreen">
+                Send message
+              </button>
+            </div>
           </form>
           <div className="w-full lg:w-2/5 flex-col lg:pl-3 items-center justify-center text-center mb-10">
             <h2 className="font-main font-medium text-center text-3xl lg:text-5xl text-black mb-2 lg:mb-5 flex justify-center items-center">

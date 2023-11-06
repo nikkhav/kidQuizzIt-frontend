@@ -9,7 +9,7 @@ const QuestionItem: React.FC<QuestionItemProps> = ({ ques, index }) => {
   const answers: AnswerItem[] = ques.answers;
   return (
     <div className="w-full flex-col items-start justify-start mb-10">
-      <h2 className="text-black text-2xl font-main font-bold mb-2">
+      <h2 className="text-black text-lg font-main font-bold mb-2 sm:text-2xl">
         {ques.question_text}
       </h2>
       <ul>
@@ -25,7 +25,7 @@ const QuestionItem: React.FC<QuestionItemProps> = ({ ques, index }) => {
                 id={`answer_item_${index}${i}`}
                 className="mr-3"
               />
-              <p>{answerItem.answer_text}</p>
+              <p className="text-sm font-main font-normal sm:text-lg">{answerItem.answer_text}</p>
             </label>
           );
         })}
