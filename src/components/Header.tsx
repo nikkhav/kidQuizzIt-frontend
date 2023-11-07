@@ -10,6 +10,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { HiMenu } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { disableScroll, enableScroll } from "../hooks/scrool";
+import logo from "../icons/logo-png-removebg-preview.png";
 
 type navPagesType = {
   page: string;
@@ -76,9 +77,9 @@ const Header = () => {
           <header className=" mt-auto h-16 md:h-24 flex justify-between items-center ">
             <Link
               to="/"
-              className="text-2xl md:text-4xl text-yellow font-main font-medium"
+              className="text-2xl md:text-4xl text-yellow font-main font-medium inline-block w-44 sm:w-56 lg:w-72"
             >
-              KidQuizzIt
+              <img src={logo} alt="" className="w-full"/>
             </Link>
             <nav className="justify-end space-x-6  relative z-0 hidden md:flex">
               {navPages.map((item: navPagesType, index: number) => {
@@ -166,9 +167,9 @@ const Header = () => {
             <div className="h-full flex flex-col justify-between">
               <Link
                 to="/"
-                className="text-4xl text-yellow font-main font-medium text-center flex justify-center my-3"
+                className="text-4xl text-yellow font-main font-medium text-center flex justify-center w-56 sm:w-72 h-20 mx-auto"
               >
-                KidQuizzIt
+                <img src={logo} alt="" className="w-full h-full mx-auto object-cover"/>
               </Link>
               <ul className="grid grid-cols-2 gap-4 w-full justify-center items-center">
                 <li className="text-center">

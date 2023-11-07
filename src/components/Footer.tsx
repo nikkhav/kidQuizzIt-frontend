@@ -3,6 +3,7 @@ import Wrapper from "./Wrapper";
 import { Link } from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
+import logo from "../icons/logo-png-removebg-preview.png";
 
 type navPagesType = {
   page: string;
@@ -28,13 +29,9 @@ const Footer: React.FC = () => {
       <div className="w-full bg-green">
         <Wrapper>
           <div className="w-full bg-green pt-10 pb-0 flex flex-wrap lg:flex-no-wrap items-start justify-between">
-            <div className="w-1/4 lg:order-none lg:w-1/4  sm:w-1/2 h-full flex items-start justify-start">
-              <Link to="/">
-                <h2 className="sm:text-3xl md:text-4xl xl:text-5xl text-2xl text-yellow font-main font-medium ">
-                  KidQuizzIt
-                </h2>
+              <Link to="/" className="inline-block w-5/12 lg:order-none lg:w-1/4  sm:w-1/2 h-full items-start justify-start relative">
+                <img src={logo} alt="" className="w-full h-24 object-cover sm:w-3/4 absolute -top-10 left-0" />
               </Link>
-            </div>
             <ul className="w-1/2 lg:order-none lg:w-1/4 h-full mb-3 flex-col order-2 items-start justify-start">
               {navPages.map((item) => {
                 return (
@@ -67,7 +64,7 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
             </ul>
-            <div className="w-3/4 lg:order-none lg:w-1/4 sm:w-1/2 h-full flex-col ml-auto items-end sm:items-start justify-start mb-5">
+            <div className="w-7/12 lg:order-none lg:w-1/4 sm:w-1/2 h-full flex-col ml-auto items-end sm:items-start justify-start mb-5">
               <h2 className="w-full text-right xl:text-2xl sm:text-left sm:text-xl  m-0 text-sm text-white font-main font-medium mb-3 xl:mb-4">
                 Contact Info:
               </h2>
@@ -77,7 +74,8 @@ const Footer: React.FC = () => {
                     to="tel:79999999999"
                     className="w-full text-right sm:text-left  m-0 sm:text-xl xl:text-2xl text-sm text-white font-main font-medium hover:text-yellow transition-all duration-300 flex justify-end sm:justify-start items-center space-x-2"
                   >
-                    <FaPhoneAlt className="text-xs sm:text-lg mr-1 xl:text-xl xl:mr-3" /> +7-999-999-99-99
+                    <FaPhoneAlt className="text-xs sm:text-lg mr-1 xl:text-xl xl:mr-3" />{" "}
+                    +7-999-999-99-99
                   </Link>
                 </li>
                 <li className="w-full m-0 mb-1 xl:mb-3">
