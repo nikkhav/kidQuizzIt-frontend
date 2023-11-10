@@ -33,9 +33,9 @@ const Footer: React.FC = () => {
                 <img src={logo} alt="" className="w-full h-24 object-cover sm:w-3/4 absolute -top-10 left-0" />
               </Link>
             <ul className="w-1/2 lg:order-none lg:w-1/4 h-full mb-3 flex-col order-2 items-start justify-start">
-              {navPages.map((item) => {
+              {navPages.map((item, index) => {
                 return (
-                  <li className="w-full ml-0 pl-0 mb-1 xl:mb-3">
+                  <li className="w-full ml-0 pl-0 mb-1 xl:mb-3" key={index}>
                     <Link
                       to={item.to}
                       className="w-full  sm:text-xl xl:text-2xl text-left m-0 text-sm text-white font-main font-medium hover:text-yellow transition-all duration-300"

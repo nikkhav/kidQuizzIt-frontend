@@ -1,21 +1,24 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import React, { lazy, Suspense } from "react";
-import { connect } from "react-redux";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import axios from "axios";
 const Home = lazy(() => import("./pages/Home"));
 const SinglePage = lazy(() => import("./pages/SinglePage"));
 const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Contacts = lazy(() => import("./pages/Contacts"));
+import { connect } from "react-redux";
+import Loading from "./components/Loading";
 
-type AppProps = {
-  load?: boolean;
-};
 type ComponentType = React.FC<{}>;
 
-const App: React.FC<AppProps> = ({ load }) => {
+type appProps = {
+  dispatch?: any;
+  loading?: boolean;
+};
+const App: React.FC<appProps> = ({ dispatch, loading }) => {
   const routes = [
     {
       path: "/",
@@ -57,6 +60,46 @@ const App: React.FC<AppProps> = ({ load }) => {
     "#008489",
   ];
 
+  useEffect(() => {
+    axios.get("https://admin.kidquizzit.com/api/v1/about").then((response) => {
+      dispatch({
+        type: "ABOUT",
+        payload: response.data[0],
+      });
+      dispatch({
+        type: "LOADING",
+        payload: false,
+      });
+    });
+  }, []);
+  useEffect(() => {
+    axios
+      .get("https://admin.kidquizzit.com/api/v1/privacyandpolicy")
+      .then((response) => {
+        dispatch({
+          type: "POLICY",
+          payload: response.data[0],
+        });
+        dispatch({
+          type: "LOADING",
+          payload: false,
+        });
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .get("https://admin.kidquizzit.com/api/v1/termsandcondition")
+      .then((response) => {
+        dispatch({
+          type: "TERMS",
+          payload: response.data[0],
+        });
+        dispatch({
+          type: "LOADING",
+          payload: false,
+        });
+      });
+  }, []);
   return (
     <>
       <Header />
@@ -66,8 +109,8 @@ const App: React.FC<AppProps> = ({ load }) => {
             path={t.path}
             key={t.path}
             element={
-              <Suspense fallback={"loading.."}>
-                {load ? "loading.." : t.element}
+              <Suspense fallback={<Loading />}>
+                {loading ? <Loading /> : t.element}
               </Suspense>
             }
           />
