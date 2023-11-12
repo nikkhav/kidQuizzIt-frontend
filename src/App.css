@@ -17,7 +17,7 @@ body {
 @tailwind utilities;
 
 .catalog-item {
-  @apply text-white font-main font-medium  text-lg transition-all duration-300 hover:text-yellow;
+  @apply text-white w-full font-main font-medium text-left  text-sm lg:text-lg transition-all duration-300 hover:text-yellow flex justify-start items-center;
 }
 .swiper {
   width: 100%;

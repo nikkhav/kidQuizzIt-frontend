@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Wrapper from "./Wrapper";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { useState } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useClickOutSide } from "../hooks/useClickOutSide";
 import { useRef } from "react";
@@ -11,12 +11,15 @@ import { HiMenu } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { disableScroll, enableScroll } from "../hooks/scrool";
 import logo from "../icons/logo-png-removebg-preview.png";
-
+import { connect } from "react-redux";
 type navPagesType = {
   page: string;
   to: string;
 };
-const Header = () => {
+type headerProps = {
+  category?: any;
+};
+const Header: React.FC<headerProps> = ({ category }) => {
   const dropRef = useRef(null);
   const [drop, setDrop] = useState<boolean>(false);
   const navPages: navPagesType[] = [
@@ -72,16 +75,16 @@ const Header = () => {
         </Wrapper>
       </div>
       <div className="w-full h-1 bg-yellow  hidden md:block"></div>
-      <div className="w-full  h-16 md:h-24 bg-green mb-10 md:mb-16">
+      <div className="w-full  h-16 md:h-24 bg-green mb-10 md:mb-24 relative">
         <Wrapper>
           <header className=" mt-auto h-16 md:h-24 flex justify-between items-center ">
             <Link
               to="/"
               className="text-2xl md:text-4xl text-yellow font-main font-medium inline-block w-44 sm:w-56 lg:w-72"
             >
-              <img src={logo} alt="" className="w-full"/>
+              <img src={logo} alt="" className="w-full" />
             </Link>
-            <nav className="justify-end space-x-6  relative z-0 hidden md:flex">
+            <nav className="justify-end space-x-6   z-0 hidden md:flex">
               {navPages.map((item: navPagesType, index: number) => {
                 if (index != 0) {
                   return (
@@ -118,33 +121,34 @@ const Header = () => {
                     exit={{ y: "-100%" }}
                     data-value="headerDropdown"
                     ref={dropRef}
-                    className="absolute z-20 -bottom-24 -right-2 w-96 flex justify-between items-center px-3 h-20 bg-green "
+                    className="absolute z-20 -bottom-20 w-full -right-0  h-20 bg-green "
                   >
-                    <li>
-                      <Link className="catalog-item" to="">
-                        Catalog
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="catalog-item" to="">
-                        Catalog
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="catalog-item" to="">
-                        Catalog
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="catalog-item" to="">
-                        Catalog
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="catalog-item" to="">
-                        Catalog
-                      </Link>
-                    </li>
+                    <Wrapper>
+                      <div className="flex justify-between items-center px-3 lg:pl-7 lg:pr-5 xl:pl-40 xl:pr-20 h-20">
+                        {category &&
+                          category.map((cat: any, index: number) => {
+                            return index != category.length - 1 ? (
+                              <li
+                                key={index}
+                                className="w-1/4 h-full flex items-center justify-start relative before:absolute before:w-1 before:h-6 before:bg-yellow before:right-8"
+                              >
+                                <Link className="catalog-item" to="/catalog">
+                                  {cat.title}
+                                </Link>
+                              </li>
+                            ) : (
+                              <li
+                                key={index}
+                                className="w-1/5 h-full flex items-center justify-start"
+                              >
+                                <Link className="catalog-item" to="/catalog">
+                                  {cat.title}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                      </div>
+                    </Wrapper>
                   </motion.ul>
                 </AnimatePresence>
               )}
@@ -169,58 +173,46 @@ const Header = () => {
                 to="/"
                 className="text-4xl text-yellow font-main font-medium text-center flex justify-center w-56 sm:w-72 h-20 mx-auto"
               >
-                <img src={logo} alt="" className="w-full h-full mx-auto object-cover"/>
+                <img
+                  src={logo}
+                  alt=""
+                  className="w-full h-full mx-auto object-cover"
+                />
               </Link>
-              <ul className="grid grid-cols-2 gap-4 w-full justify-center items-center">
-                <li className="text-center">
-                  <Link
-                    to="#"
-                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li className="text-center">
-                  <Link
-                    to="#"
-                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
-                  >
-                    Contacts
-                  </Link>
-                </li>
-                <li className="text-center">
-                  <Link
-                    to="#"
-                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
-                  >
-                    Catalog
-                  </Link>
-                </li>
-                <li className="text-center">
-                  {" "}
-                  <Link
-                    to="#"
-                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
-                  >
-                    Catalog
-                  </Link>
-                </li>
-                <li className="text-center">
-                  <Link
-                    to="#"
-                    className="text-center text-2xl sm:text-3xl font-main text-white font-normal"
-                  >
-                    Catalog
-                  </Link>
-                </li>
-                <li className="text-center">
-                  <Link
-                    to="#"
-                    className="text-center text-2xl sm:text-3xll font-main text-white font-normal"
-                  >
-                    Catalog
-                  </Link>
-                </li>
+              <ul className="w-full gap-4 flex flex-col justify-center items-center px-5 sm:px-10">
+                <div className="w-full mx-auto grid grid-cols-2 gap-4">
+                  <li className="text-left">
+                    <Link
+                      to="#"
+                      className="text-left text-lg sm:text-xl md:text-3xl font-main text-white font-normal"
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li className="text-left">
+                    <Link
+                      to="#"
+                      className="text-left text-lg sm:text-xl md:text-3xl font-main text-white font-normal"
+                    >
+                      Contacts
+                    </Link>
+                  </li>
+                </div>
+                <div className="w-full mx-auto grid grid-cols-2 gap-4">
+                  {category &&
+                    category.map((cat: any) => {
+                      return (
+                        <li className="text-left">
+                          <Link
+                            to="#"
+                            className="text-left text-lg sm:text-xl md:text-3xl font-main text-white font-normal"
+                          >
+                            {cat.title}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                </div>
               </ul>
               <ul className="w-full flex flex-col items-center  justify-center sm:flex-row">
                 <li className="w-full">
@@ -253,4 +245,5 @@ const Header = () => {
   );
 };
 
-export default Header;
+const t = (a: any) => a;
+export default connect(t)(Header);

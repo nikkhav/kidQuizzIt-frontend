@@ -9,6 +9,8 @@ const SinglePage = lazy(() => import("./pages/SinglePage"));
 const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Contacts = lazy(() => import("./pages/Contacts"));
+const Catalog = lazy(() => import("./pages/Catalog"));
+
 import { connect } from "react-redux";
 import Loading from "./components/Loading";
 
@@ -27,6 +29,10 @@ const App: React.FC<appProps> = ({ dispatch, loading }) => {
     {
       path: "/contacts",
       element: <Contacts />,
+    },
+    {
+      path: "/catalog",
+      element: <Catalog />,
     },
     {
       path: "/privacy/:name",
@@ -93,6 +99,20 @@ const App: React.FC<appProps> = ({ dispatch, loading }) => {
         dispatch({
           type: "TERMS",
           payload: response.data[0],
+        });
+        dispatch({
+          type: "LOADING",
+          payload: false,
+        });
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .get("https://admin.kidquizzit.com/api/v1/category")
+      .then((response) => {
+        dispatch({
+          type: "CATEGORY",
+          payload: response.data,
         });
         dispatch({
           type: "LOADING",
