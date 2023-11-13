@@ -39,7 +39,7 @@ const Home: React.FC = () => {
             title="FIND THE DIFFERENCES"
           />
           <SwiperComponent data={why} title="BRAIN BOOSTERS" />
-          <SwiperComponent data={colouring} title={null} />
+          <SwiperComponent colouring={colouring} title={null} />
           <ScrollTop />
         </>
       )}
