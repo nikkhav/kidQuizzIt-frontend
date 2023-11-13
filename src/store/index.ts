@@ -5,6 +5,7 @@ import termsReducer from "./slices/termsSlice";
 import differenceReducer from "./slices/differenceSlice";
 import categoryReducer from "./slices/categorySlice";
 import whyReducer from "./slices/whySlice";
+import colouringReducer from "./slices/colouringSlice";
 
 const rootReducer = combineReducers({
   about: aboutReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   difference: differenceReducer,
   category: categoryReducer,
   why: whyReducer,
+  colouring: colouringReducer,
 });
 
 export function setupStore() {

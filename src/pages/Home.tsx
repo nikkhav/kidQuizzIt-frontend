@@ -6,12 +6,8 @@ import swiperImg1 from "../images/swiper1.avif";
 import { fetchDifference } from "../store/actions/differenceAction";
 import Loading from "../components/Loading";
 import { fetchWhy } from "../store/actions/whyAction";
+import { fetchColouring } from "../store/actions/colouringAction";
 
-type dataItem = {
-  id: number;
-  img: string;
-  text: string;
-};
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const { difference, loading, error } = useAppSelector(
@@ -24,51 +20,26 @@ const Home: React.FC = () => {
   useEffect(() => {
     fetchWhy()(dispatch);
   }, [dispatch]);
-  const data: dataItem[] = [
-    {
-      id: 1,
-      img: swiperImg1,
-      text: "Check out the issue!",
-    },
-    {
-      id: 2,
-      img: swiperImg1,
-      text: "Check out the issue!",
-    },
-    {
-      id: 3,
-      img: swiperImg1,
-      text: "Check out the issue!",
-    },
-    {
-      id: 4,
-      img: swiperImg1,
-      text: "Check out the issue!",
-    },
-    {
-      id: 5,
-      img: swiperImg1,
-      text: "Check out the issue!",
-    },
-    {
-      id: 6,
-      img: swiperImg1,
-      text: "Check out the issue!",
-    },
-  ];
+  const { colouring, loadingColouring, errorColouring } = useAppSelector(
+    (state) => state.colouring
+  );
+  useEffect(() => {
+    fetchColouring()(dispatch);
+  }, [dispatch]);
   return (
     <>
-      {loading && loadingWhy && <Loading />}
+      {loading && loadingWhy && loadingColouring && <Loading />}
       {error && <p>{error}</p>}
       {errorWhy && <p>{errorWhy}</p>}
+      {errorColouring && <p>{errorColouring}</p>}
       {difference && (
         <>
           <SwiperComponent
             dataChanges={difference}
             title="FIND THE DIFFERENCES"
           />
-          <SwiperComponent data={data} title="BRAIN BOOSTERS" />
-          <SwiperComponent data={data} title={null} />
+          <SwiperComponent data={why} title="BRAIN BOOSTERS" />
+          <SwiperComponent data={colouring} title={null} />
           <ScrollTop />
         </>
       )}

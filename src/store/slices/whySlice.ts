@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { WhyItem } from "../../types/whyItem";
 
 interface WhyState {
   loadingWhy: boolean;
   errorWhy: string;
-  why: any | null;
+  why: WhyItem[] | null;
 }
 
 const initialState: WhyState = {
@@ -19,7 +20,7 @@ export const whySlice = createSlice({
     fetching(state) {
       state.loadingWhy = true;
     },
-    fetchingSuccess(state, action: PayloadAction<any>) {
+    fetchingSuccess(state, action: PayloadAction<WhyItem[]>) {
       state.loadingWhy = false;
       state.why = action.payload;
     },
