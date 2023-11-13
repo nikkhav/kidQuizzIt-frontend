@@ -107,7 +107,7 @@ const MySwiper: React.FC<MySwiperProps> = ({
             navigation={true}
             modules={[Navigation]}
           >
-            {colouring.map((item, index) => {
+            {colouring.map((item) => {
               return (
                 <SwiperSlide key={item.id}>
                   <Link to="/catalog">
