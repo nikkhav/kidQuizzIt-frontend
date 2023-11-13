@@ -9,24 +9,24 @@ import "swiper/css/navigation";
 import { Link } from "react-router-dom";
 import { dataItem } from "../types/dataItem";
 import { dataChanges } from "../types/dataChanges";
-
+import { differenceData } from "../types/DifferenceData";
 
 type MySwiperProps = {
   data?: dataItem[];
-  dataChanges?: dataChanges[];
+  dataChanges?: differenceData[] | null;
 };
 type CardCountMap = {
   [key: string]: number;
 };
 const MySwiper: React.FC<MySwiperProps> = ({ data, dataChanges }) => {
   const cardCounts: CardCountMap = {
-    '(max-width: 400px)': 1,   
-    '(max-width: 480px)': 2,  
-    '(max-width: 991px)': 3,   
-    '(min-width: 992px)': 4, 
+    "(max-width: 400px)": 1,
+    "(max-width: 480px)": 2,
+    "(max-width: 991px)": 3,
+    "(min-width: 992px)": 4,
   };
 
-  const [currentCardCount, setCurrentCardCount] = useState<number>(4); 
+  const [currentCardCount, setCurrentCardCount] = useState<number>(4);
 
   useEffect(() => {
     const handleMediaChange = () => {
@@ -38,12 +38,12 @@ const MySwiper: React.FC<MySwiperProps> = ({ data, dataChanges }) => {
       }
     };
 
-    window.addEventListener('resize', handleMediaChange);
+    window.addEventListener("resize", handleMediaChange);
 
     handleMediaChange();
 
     return () => {
-      window.removeEventListener('resize', handleMediaChange);
+      window.removeEventListener("resize", handleMediaChange);
     };
   }, []);
   return (
@@ -83,8 +83,28 @@ const MySwiper: React.FC<MySwiperProps> = ({ data, dataChanges }) => {
               return (
                 <SwiperSlide key={index}>
                   <Link to="/catalog">
-                    <img className="difference_img" src={item.img1} alt="" />
-                    <img className="difference_img" src={item.img2} alt="" />
+                    <img className="difference_img" src={item.image1} alt="" />
+                    <img className="difference_img" src={item.image1} alt="" />
+                  </Link>
+                </SwiperSlide>
+              );
+            })}
+            {dataChanges.map((item, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Link to="/catalog">
+                    <img className="difference_img" src={item.image1} alt="" />
+                    <img className="difference_img" src={item.image1} alt="" />
+                  </Link>
+                </SwiperSlide>
+              );
+            })}
+            {dataChanges.map((item, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Link to="/catalog">
+                    <img className="difference_img" src={item.image1} alt="" />
+                    <img className="difference_img" src={item.image1} alt="" />
                   </Link>
                 </SwiperSlide>
               );

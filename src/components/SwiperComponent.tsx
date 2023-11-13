@@ -2,11 +2,12 @@ import React from "react";
 import MySwiper from "./Swiper";
 import { dataItem } from "../types/dataItem";
 import { dataChanges } from "../types/dataChanges";
+import { differenceData } from "../types/DifferenceData";
 
 type SwiperComponentProps = {
   title: string | null;
   data?: dataItem[];
-  dataChanges?: dataChanges[];
+  dataChanges?: differenceData[] | null;
 };
 const SwiperComponent: React.FC<SwiperComponentProps> = ({
   title,

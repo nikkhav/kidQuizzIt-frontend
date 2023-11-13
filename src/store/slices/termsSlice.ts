@@ -14,7 +14,7 @@ const initialState: termsState = {
 };
 
 export const termsSlice = createSlice({
-  name: "privacy",
+  name: "terms",
   initialState,
   reducers: {
     fetching(state) {

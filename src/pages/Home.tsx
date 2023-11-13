@@ -1,18 +1,29 @@
+import { useEffect } from "react";
 import ScrollTop from "../components/ScrollTop";
 import SwiperComponent from "../components/SwiperComponent";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import swiperImg1 from "../images/swiper1.avif";
+import { fetchDifference } from "../store/actions/differenceAction";
+import Loading from "../components/Loading";
+import { fetchWhy } from "../store/actions/whyAction";
 
 type dataItem = {
   id: number;
   img: string;
   text: string;
 };
-type dataChanges = {
-  id: number;
-  img1: string;
-  img2: string;
-};
 const Home: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { difference, loading, error } = useAppSelector(
+    (state) => state.difference
+  );
+  useEffect(() => {
+    fetchDifference()(dispatch);
+  }, [dispatch]);
+  const { why, loadingWhy, errorWhy } = useAppSelector((state) => state.why);
+  useEffect(() => {
+    fetchWhy()(dispatch);
+  }, [dispatch]);
   const data: dataItem[] = [
     {
       id: 1,
@@ -45,44 +56,22 @@ const Home: React.FC = () => {
       text: "Check out the issue!",
     },
   ];
-  const dataChanges: dataChanges[] = [
-    {
-      id: 1,
-      img1: swiperImg1,
-      img2: swiperImg1,
-    },
-    {
-      id: 2,
-      img1: swiperImg1,
-      img2: swiperImg1,
-    },
-    {
-      id: 3,
-      img1: swiperImg1,
-      img2: swiperImg1,
-    },
-    {
-      id: 4,
-      img1: swiperImg1,
-      img2: swiperImg1,
-    },
-    {
-      id: 5,
-      img1: swiperImg1,
-      img2: swiperImg1,
-    },
-    {
-      id: 6,
-      img1: swiperImg1,
-      img2: swiperImg1,
-    },
-  ];
   return (
     <>
-      <SwiperComponent dataChanges={dataChanges} title="FIND THE DIFFERENCES" />
-      <SwiperComponent data={data} title="BRAIN BOOSTERS" />
-      <SwiperComponent data={data} title={null} />
-      <ScrollTop />
+      {loading && loadingWhy && <Loading />}
+      {error && <p>{error}</p>}
+      {errorWhy && <p>{errorWhy}</p>}
+      {difference && (
+        <>
+          <SwiperComponent
+            dataChanges={difference}
+            title="FIND THE DIFFERENCES"
+          />
+          <SwiperComponent data={data} title="BRAIN BOOSTERS" />
+          <SwiperComponent data={data} title={null} />
+          <ScrollTop />
+        </>
+      )}
     </>
   );
 };

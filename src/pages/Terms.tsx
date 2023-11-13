@@ -1,8 +1,6 @@
-import { useParams } from "react-router-dom";
 import Wrapper from "../components/Wrapper";
 import privacyImg from "../icons/privacy_policy.svg";
 import React from "react";
-import { PolicyTermsData } from "../types/PolicyTermsData";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { useEffect } from "react";
 import Loading from "../components/Loading";
@@ -14,7 +12,6 @@ const Privacy: React.FC = () => {
   useEffect(() => {
     fetchTerms()(dispatch);
   }, [dispatch]);
-  console.log(terms);
   return (
     <>
       {error && <p>{error}</p>}
