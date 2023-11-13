@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import Wrapper from "../components/Wrapper";
 import { IoIosArrowDown } from "react-icons/io";
 
-type CatalogProps = {
-  category?: any;
-};
-const Catalog: React.FC<CatalogProps> = ({ category }) => {
-  const [currretCat, setCurrentCat] = useState<number | null>(null);
-  const changeCat = (index: number) => {
-    if (currretCat == index) {
-      setCurrentCat(null);
-    } else {
-      setCurrentCat(index);
-    }
-  };
+const Catalog: React.FC = () => {
+  // const [currretCat, setCurrentCat] = useState<number | null>(null);
+  // const changeCat = (index: number) => {
+  //   if (currretCat == index) {
+  //     setCurrentCat(null);
+  //   } else {
+  //     setCurrentCat(index);
+  //   }
+  // };
   return (
     <Wrapper>
       <div>
@@ -23,10 +19,12 @@ const Catalog: React.FC<CatalogProps> = ({ category }) => {
             type="search"
             className="border-gray border-2 w-10/12 rounded-s-xl h-full outline-none px-8 text-xl font-main font-normal"
           />
-          <button className="w-2/12 h-full bg-green rounded-e-xl text-white cursor-pointer font-main font-medium text-2xl">Search</button>
+          <button className="w-2/12 h-full bg-green rounded-e-xl text-white cursor-pointer font-main font-medium text-2xl">
+            Search
+          </button>
         </div>
         <div className="w-full my-10 flex justify-between items-start">
-          <div className="w-1/4 border-gray border-2 px-5 py-5 flex rounded-xl flex-col justify-start items-start gap-2">
+          {/* <div className="w-1/4 border-gray border-2 px-5 py-5 flex rounded-xl flex-col justify-start items-start gap-2">
             {category.map((cat: any, index: number) => {
               return (
                 <label key={index} className="w-full">
@@ -60,7 +58,7 @@ const Catalog: React.FC<CatalogProps> = ({ category }) => {
                 </label>
               );
             })}
-          </div>
+          </div> */}
           <div></div>
         </div>
       </div>
@@ -68,5 +66,4 @@ const Catalog: React.FC<CatalogProps> = ({ category }) => {
   );
 };
 
-const t = (a: any) => a;
-export default connect(t)(Catalog);
+export default Catalog;

@@ -10,17 +10,14 @@ const About = lazy(() => import("./pages/About"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Contacts = lazy(() => import("./pages/Contacts"));
 const Catalog = lazy(() => import("./pages/Catalog"));
+const Terms = lazy(() => import("./pages/Terms"));
 
-import { connect } from "react-redux";
 import Loading from "./components/Loading";
 
 type ComponentType = React.FC<{}>;
 
-type appProps = {
-  dispatch?: any;
-  loading?: boolean;
-};
-const App: React.FC<appProps> = ({ dispatch, loading }) => {
+const App: React.FC = () => {
+  const loading = false;
   const routes = [
     {
       path: "/",
@@ -31,11 +28,15 @@ const App: React.FC<appProps> = ({ dispatch, loading }) => {
       element: <Contacts />,
     },
     {
+      path: "/terms",
+      element: <Terms />,
+    },
+    {
       path: "/catalog",
       element: <Catalog />,
     },
     {
-      path: "/privacy/:name",
+      path: "/privacy/",
       element: <Privacy />,
     },
     {
@@ -66,60 +67,116 @@ const App: React.FC<appProps> = ({ dispatch, loading }) => {
     "#008489",
   ];
 
-  useEffect(() => {
-    axios.get("https://admin.kidquizzit.com/api/v1/about").then((response) => {
-      dispatch({
-        type: "ABOUT",
-        payload: response.data[0],
-      });
-      dispatch({
-        type: "LOADING",
-        payload: false,
-      });
-    });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("https://admin.kidquizzit.com/api/v1/privacyandpolicy")
-      .then((response) => {
-        dispatch({
-          type: "POLICY",
-          payload: response.data[0],
-        });
-        dispatch({
-          type: "LOADING",
-          payload: false,
-        });
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("https://admin.kidquizzit.com/api/v1/termsandcondition")
-      .then((response) => {
-        dispatch({
-          type: "TERMS",
-          payload: response.data[0],
-        });
-        dispatch({
-          type: "LOADING",
-          payload: false,
-        });
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("https://admin.kidquizzit.com/api/v1/category")
-      .then((response) => {
-        dispatch({
-          type: "CATEGORY",
-          payload: response.data,
-        });
-        dispatch({
-          type: "LOADING",
-          payload: false,
-        });
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://admin.kidquizzit.com/api/v1/about").then((response) => {
+  //     dispatch({
+  //       type: "ABOUT",
+  //       payload: response.data[0],
+  //     });
+  //     dispatch({
+  //       type: "LOADING",
+  //       payload: false,
+  //     });
+  //   });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://admin.kidquizzit.com/api/v1/privacyandpolicy")
+  //     .then((response) => {
+  //       dispatch({
+  //         type: "POLICY",
+  //         payload: response.data[0],
+  //       });
+  //       dispatch({
+  //         type: "LOADING",
+  //         payload: false,
+  //       });
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://admin.kidquizzit.com/api/v1/termsandcondition")
+  //     .then((response) => {
+  //       dispatch({
+  //         type: "TERMS",
+  //         payload: response.data[0],
+  //       });
+  //       dispatch({
+  //         type: "LOADING",
+  //         payload: false,
+  //       });
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://admin.kidquizzit.com/api/v1/category")
+  //     .then((response) => {
+  //       dispatch({
+  //         type: "CATEGORY",
+  //         payload: response.data,
+  //       });
+  //       dispatch({
+  //         type: "LOADING",
+  //         payload: false,
+  //       });
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://admin.kidquizzit.com/api/v1/colouring")
+  //     .then((response) => {
+  //       dispatch({
+  //         type: "COLORING",
+  //         payload: response.data,
+  //       });
+  //       dispatch({
+  //         type: "LOADING",
+  //         payload: false,
+  //       });
+  //     });
+  // }, []);
+  //   useEffect(() => {
+  //   axios
+  //     .get("https://admin.kidquizzit.com/api/v1/whyquestion")
+  //     .then((response) => {
+  //       dispatch({
+  //         type: "WHY",
+  //         payload: response.data,
+  //       });
+  //       dispatch({
+  //         type: "LOADING",
+  //         payload: false,
+  //       });
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://admin.kidquizzit.com/api/v1/quiz")
+  //     .then((response) => {
+  //       dispatch({
+  //         type: "QUIZ",
+  //         payload: response.data,
+  //       });
+  //       dispatch({
+  //         type: "LOADING",
+  //         payload: false,
+  //       });
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://admin.kidquizzit.com/api/v1/difference")
+  //     .then((response) => {
+  //       dispatch({
+  //         type: "DIFFERENCE",
+  //         payload: response.data,
+  //       });
+  //       dispatch({
+  //         type: "LOADING",
+  //         payload: false,
+  //       });
+  //     });
+  // }, []);
   return (
     <>
       <Header />
@@ -141,5 +198,4 @@ const App: React.FC<appProps> = ({ dispatch, loading }) => {
   );
 };
 
-const t = (a: any) => a;
-export default connect(t)(App);
+export default App;

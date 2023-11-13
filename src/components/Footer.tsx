@@ -29,9 +29,16 @@ const Footer: React.FC = () => {
       <div className="w-full bg-green">
         <Wrapper>
           <div className="w-full bg-green pt-10 pb-0 flex flex-wrap lg:flex-no-wrap items-start justify-between">
-              <Link to="/" className="inline-block w-5/12 lg:order-none lg:w-1/4  sm:w-1/2 h-full items-start justify-start relative">
-                <img src={logo} alt="" className="w-full h-24 object-cover sm:w-3/4 absolute -top-10 left-0" />
-              </Link>
+            <Link
+              to="/"
+              className="inline-block w-5/12 lg:order-none lg:w-1/4  sm:w-1/2 h-full items-start justify-start relative"
+            >
+              <img
+                src={logo}
+                alt=""
+                className="w-full h-24 object-cover sm:w-3/4 absolute -top-10 left-0"
+              />
+            </Link>
             <ul className="w-1/2 lg:order-none lg:w-1/4 h-full mb-3 flex-col order-2 items-start justify-start">
               {navPages.map((item, index) => {
                 return (
@@ -49,7 +56,7 @@ const Footer: React.FC = () => {
             <ul className="w-1/2 lg:order-none lg:w-1/4 h-full flex-col order-3 items-end sm:items-start justify-start">
               <li className="w-full text-right sm:text-left m-0 mb-1 xl:mb-3">
                 <Link
-                  to="/privacy/policy"
+                  to="/privacy"
                   className="w-full text-right sm:text-left sm:text-xl xl:text-2xl text-sm text-white font-main font-medium hover:text-yellow transition-all duration-300"
                 >
                   Privacy and Policy
@@ -57,7 +64,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="w-full text-right sm:text-left  m-0">
                 <Link
-                  to="/privacy/terms"
+                  to="/terms"
                   className="w-full text-right sm:text-left sm:text-xl xl:text-2xl text-sm text-white font-main font-medium hover:text-yellow transition-all duration-300"
                 >
                   Terms and condisions

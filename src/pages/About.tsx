@@ -1,14 +1,20 @@
 import Wrapper from "../components/Wrapper";
-import { connect } from "react-redux";
-import { AboutData } from "../types/AboutData";
+import { useEffect } from "react";
+import { fetchAbout } from "../store/actions/aboutAction";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import Loading from "../components/Loading";
 
-type AboutProps = {
-  about?: AboutData;
-};
+const About: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { about, loading, error } = useAppSelector((state) => state.about);
+  useEffect(() => {
+    fetchAbout()(dispatch);
+  }, [dispatch]);
 
-const About: React.FC<AboutProps> = ({ about }) => {
   return (
     <>
+      {loading && <Loading />}
+      {error && <p>{error}</p>}
       {about && (
         <>
           <Wrapper>
@@ -26,7 +32,7 @@ const About: React.FC<AboutProps> = ({ about }) => {
           />
           <Wrapper>
             <p className="font-main font-normal text-black text-lg sm:text-2xl leading-7 mb-4">
-              {about.subtitle}
+              {/* {about.subtitle} */}
             </p>
             <p className="font-main font-normal text-black text-lg sm:text-2xl leading-7 mb-16">
               {about.description}
@@ -38,5 +44,4 @@ const About: React.FC<AboutProps> = ({ about }) => {
   );
 };
 
-const t = (a: any) => a;
-export default connect(t)(About);
+export default About;
