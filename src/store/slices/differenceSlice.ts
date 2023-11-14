@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { differenceData } from "../../types/DifferenceData";
 
 interface DifferenceState {
-  loading: boolean;
-  error: string;
+  loadingDifference: boolean;
+  errorDifference: string;
   difference: differenceData[] | null;
 }
 
 const initialState: DifferenceState = {
-  loading: false,
-  error: "",
+  loadingDifference: false,
+  errorDifference: "",
   difference: null,
 };
 
@@ -18,15 +18,15 @@ export const differenceSlice = createSlice({
   initialState,
   reducers: {
     fetching(state) {
-      state.loading = true;
+      state.loadingDifference = true;
     },
     fetchingSuccess(state, action: PayloadAction<differenceData[]>) {
-      state.loading = false;
+      state.loadingDifference = false;
       state.difference = action.payload;
     },
     fechingError(state, action: PayloadAction<Error>) {
-      state.loading = false;
-      state.error = action.payload.message;
+      state.loadingDifference = false;
+      state.errorDifference = action.payload.message;
     },
   },
 });

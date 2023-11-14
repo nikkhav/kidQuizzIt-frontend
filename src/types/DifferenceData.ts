@@ -1,11 +1,7 @@
-type categoryType = {
-  id: number;
-  parent_id: number;
-  title: string;
-};
+import { childCategory } from "./childCategory";
 
 export interface differenceData {
-  category: categoryType;
+  category: childCategory;
   category_id: number;
   id: number;
   image1: string;

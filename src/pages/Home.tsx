@@ -10,7 +10,7 @@ import { fetchColouring } from "../store/actions/colouringAction";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { difference, loading, error } = useAppSelector(
+  const { difference, loadingDifference, errorDifference } = useAppSelector(
     (state) => state.difference
   );
   useEffect(() => {
@@ -28,11 +28,11 @@ const Home: React.FC = () => {
   }, [dispatch]);
   return (
     <>
-      {loading && loadingWhy && loadingColouring && <Loading />}
-      {error && <p>{error}</p>}
+      {loadingDifference && loadingWhy && loadingColouring && <Loading />}
+      {errorDifference && <p>{errorDifference}</p>}
       {errorWhy && <p>{errorWhy}</p>}
       {errorColouring && <p>{errorColouring}</p>}
-      {difference && (
+      {difference && colouring && why && (
         <>
           <SwiperComponent
             dataChanges={difference}

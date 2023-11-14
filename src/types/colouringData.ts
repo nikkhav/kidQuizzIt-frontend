@@ -1,10 +1,7 @@
-type categoryData = {
-  parent_id: number;
-  title: string;
-  id: number;
-};
+import { childCategory } from "./childCategory";
+
 export interface colouringData {
-  category: categoryData;
+  category: childCategory;
   category_id: number;
   id: number;
   image: string;

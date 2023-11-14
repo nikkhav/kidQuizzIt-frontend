@@ -1,10 +1,10 @@
+import { QuestionItem } from "./QuestionItem";
 import { childCategory } from "./childCategory";
 
-export interface WhyItem {
+export interface quizData {
   category: childCategory;
   category_id: number;
-  description: string;
   id: number;
-  image: string;
+  question: QuestionItem[];
   title: string;
 }

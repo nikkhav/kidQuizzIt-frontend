@@ -12,6 +12,9 @@ import { dataChanges } from "../types/dataChanges";
 import { differenceData } from "../types/DifferenceData";
 import { WhyItem } from "../types/whyItem";
 import { colouringData } from "../types/colouringData";
+import ColouringCard from "./colouringCard";
+import DifferenceCard from "./DifferenceCard";
+import WhyCard from "./WhyCard";
 type MySwiperProps = {
   data?: WhyItem[] | null;
   dataChanges?: differenceData[] | null;
@@ -63,13 +66,10 @@ const MySwiper: React.FC<MySwiperProps> = ({
             navigation={true}
             modules={[Navigation]}
           >
-            {data.map((item, index) => {
+            {data.map((item) => {
               return (
-                <SwiperSlide key={index}>
-                  <Link to="/catalog">
-                    <img src={item.image} alt="" />
-                    <h2 className="swiper_text">{item.title}</h2>
-                  </Link>
+                <SwiperSlide key={item.id}>
+                  <WhyCard item={item} />
                 </SwiperSlide>
               );
             })}
@@ -88,10 +88,7 @@ const MySwiper: React.FC<MySwiperProps> = ({
             {dataChanges.map((item, index) => {
               return (
                 <SwiperSlide key={index}>
-                  <Link to="/catalog">
-                    <img className="difference_img" src={item.image1} alt="" />
-                    <img className="difference_img" src={item.image1} alt="" />
-                  </Link>
+                  <DifferenceCard item={item} />
                 </SwiperSlide>
               );
             })}
@@ -110,9 +107,7 @@ const MySwiper: React.FC<MySwiperProps> = ({
             {colouring.map((item) => {
               return (
                 <SwiperSlide key={item.id}>
-                  <Link to="/catalog">
-                    <img className="difference_img" src={item.image} alt="" />
-                  </Link>
+                  <ColouringCard item={item} />
                 </SwiperSlide>
               );
             })}
