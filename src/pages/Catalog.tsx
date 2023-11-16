@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Wrapper from "../components/Wrapper";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
@@ -13,6 +13,7 @@ import WhyCard from "../components/WhyCard";
 import QuizCard from "../components/QuizCard";
 import ColouringCard from "../components/colouringCard";
 import { allData } from "../types/allData";
+import SearchInput from "../components/SearchInput";
 
 const Catalog: React.FC = () => {
   const [currretCat, setCurrentCat] = useState<number | null>(null);
@@ -73,15 +74,91 @@ const Catalog: React.FC = () => {
 
   // -----------------------
   const haveProd = category && quiz && colouring && difference && why;
+  console.log(quiz);
   const [prod, setProd] = useState<allData[]>([]);
-
   useEffect(() => {
     if (haveProd) {
       const prods = [...quiz, ...colouring, ...difference, ...why];
       const shuffledProds = prods.sort(() => Math.random() - 0.5);
       setProd(shuffledProds);
     }
-  }, [haveProd, quiz, colouring, difference, why]);
+  }, [quiz, colouring, difference, why]);
+  const searchProd = (value: string) => {
+    const newProd: allData[] = [];
+    quiz?.map((a) => {
+      if (a.title.includes(value)) {
+        newProd.push(a);
+      }
+    });
+    colouring?.map((a) => {
+      if (a.category.title.includes(value)) {
+        newProd.push(a);
+      }
+    });
+    difference?.map((a) => {
+      if (a.category.title.includes(value)) {
+        newProd.push(a);
+      }
+    });
+    why?.map((a) => {
+      if (a.title.includes(value)) {
+        newProd.push(a);
+      }
+    });
+    setProd(newProd);
+  };
+  const ChangeQuizes = useCallback(
+    (event: any) => {
+      if (quiz) {
+        const target = event.target.innerText;
+        const newArr = quiz?.filter((item) => {
+          return item.category.title == target;
+        });
+        setProd(newArr);
+      }
+    },
+    [quiz]
+  );
+  const ChangeColouring = useCallback(
+    (event: any) => {
+      const target = event.target.innerText;
+      if (colouring) {
+        const target = event.target.innerText;
+        const newArr = colouring?.filter((item) => {
+          return item.category.title == target;
+        });
+        setProd([]);
+        setProd(newArr);
+      }
+    },
+    [colouring]
+  );
+  const ChangeWhy = useCallback(
+    (event: any) => {
+      const target = event.target.innerText;
+      if (why) {
+        const target = event.target.innerText;
+        const newArr = why?.filter((item) => {
+          return item.category.title == target;
+        });
+        setProd(newArr);
+      }
+    },
+    [why]
+  );
+  const ChangeDifference = useCallback(
+    (event: any) => {
+      const target = event.target.innerText;
+      if (difference) {
+        const target = event.target.innerText;
+        const newArr = difference?.filter((item) => {
+          return item.category.title == target;
+        });
+        setProd(newArr);
+      }
+    },
+    [difference]
+  );
   return (
     <>
       {errorCategory && <p>{errorCategory}</p>}
@@ -94,15 +171,7 @@ const Catalog: React.FC = () => {
         <>
           <Wrapper>
             <div>
-              <div className="flex justify-center items-center w-3/4 mx-auto h-14 mb-16">
-                <input
-                  type="search"
-                  className="border-gray border-2 w-10/12 rounded-s-xl h-full outline-none px-8 text-xl font-main font-normal"
-                />
-                <button className="w-2/12 h-full bg-green rounded-e-xl text-white cursor-pointer font-main font-medium text-2xl">
-                  Search
-                </button>
-              </div>
+              <SearchInput searchProd={searchProd} />
               <div className="w-full my-10 flex justify-between items-start">
                 <div className="w-1/4 border-gray border-2 px-5 py-5 flex rounded-xl flex-col justify-start items-start gap-2">
                   {category.map((cat: any, index: number) => {
@@ -130,6 +199,15 @@ const Catalog: React.FC = () => {
                                 <li
                                   key={index}
                                   className="mb-2 border-b-2 border-gray w-full font-main font-normal text-lg text-black cursor-pointer hover:text-yellow transition-all duration-300"
+                                  onClick={
+                                    cat.title == "Quizes"
+                                      ? () => ChangeQuizes(event)
+                                      : cat.title == "Colourings"
+                                      ? () => ChangeColouring(event)
+                                      : cat.title == "Why Questions"
+                                      ? () => ChangeWhy(event)
+                                      : () => ChangeDifference(event)
+                                  }
                                 >
                                   {child.title}
                                 </li>
@@ -143,15 +221,35 @@ const Catalog: React.FC = () => {
                 </div>
                 <div className="w-3/4 pl-5 grid grid-cols-3 gap-4">
                   {prod.map((card: any) => {
-                    return card.image1 ? (
-                      <DifferenceCard key={card.image1} item={card} />
-                    ) : card.description ? (
-                      <WhyCard key={card.image} item={card} />
-                    ) : card.questions ? (
-                      <QuizCard key={card.questions} item={card} />
-                    ) : (
-                      <ColouringCard key={card.image} item={card} />
-                    );
+                    if (card.category.parent_id == 4) {
+                      return (
+                        <DifferenceCard
+                          key={`${card.category.parent_id}/${card.id}`}
+                          item={card}
+                        />
+                      );
+                    } else if (card.category.parent_id == 3) {
+                      return (
+                        <WhyCard
+                          key={`${card.category.parent_id}/${card.id}`}
+                          item={card}
+                        />
+                      );
+                    } else if (card.category.parent_id == 1) {
+                      return (
+                        <QuizCard
+                          key={`${card.category.parent_id}/${card.id}`}
+                          item={card}
+                        />
+                      );
+                    } else {
+                      return (
+                        <ColouringCard
+                          key={`${card.category.parent_id}/${card.id}`}
+                          item={card}
+                        />
+                      );
+                    }
                   })}
                 </div>
               </div>

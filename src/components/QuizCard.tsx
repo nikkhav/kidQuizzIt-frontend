@@ -7,10 +7,9 @@ type QuizCardType = {
   item: quizData;
 };
 const QuizCard: React.FC<QuizCardType> = ({ item }) => {
-  console.log(item);
   return (
     <Link
-      to="#"
+      to={`/single-page/${item.category.parent_id}/${item.id}`}
       className="inline-block w-full h-96 flex-col items-start justify-start border-2 border-gray rounded-lg overflow-hidden"
     >
       <img src={quizImg} alt="" className="w-full h-4/5 object-cover " />

@@ -40,7 +40,7 @@ const App: React.FC = () => {
       element: <Privacy />,
     },
     {
-      path: "/single-page",
+      path: "/single-page/:parent_id/:id",
       element: <SinglePage />,
     },
     {

@@ -5,6 +5,6 @@ export interface quizData {
   category: childCategory;
   category_id: number;
   id: number;
-  question: QuestionItem[];
+  questions: QuestionItem[];
   title: string;
 }

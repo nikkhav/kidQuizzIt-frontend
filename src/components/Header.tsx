@@ -56,6 +56,10 @@ const Header: React.FC = () => {
     setBurger(false);
     enableScroll();
   };
+  const changePage = () => {
+    setBurger(false);
+    enableScroll();
+  };
   return (
     <>
       {errorCategory && <p>{errorCategory}</p>}
@@ -202,16 +206,18 @@ const Header: React.FC = () => {
                     <div className="w-full mx-auto grid grid-cols-2 gap-4">
                       <li className="text-left">
                         <Link
-                          to="#"
+                          to="/about"
                           className="text-left text-lg sm:text-xl md:text-3xl font-main text-white font-normal"
+                          onClick={changePage}
                         >
                           About Us
                         </Link>
                       </li>
                       <li className="text-left">
                         <Link
-                          to="#"
+                          to="/contacts"
                           className="text-left text-lg sm:text-xl md:text-3xl font-main text-white font-normal"
+                          onClick={changePage}
                         >
                           Contacts
                         </Link>
@@ -223,8 +229,9 @@ const Header: React.FC = () => {
                           return (
                             <li className="text-left">
                               <Link
-                                to="#"
+                                to="/catalog"
                                 className="text-left text-lg sm:text-xl md:text-3xl font-main text-white font-normal"
+                                onClick={() => setBurger(false)}
                               >
                                 {cat.title}
                               </Link>

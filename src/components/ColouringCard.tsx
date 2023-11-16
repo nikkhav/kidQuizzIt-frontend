@@ -7,7 +7,7 @@ type ColouringCardProps = {
 };
 const ColouringCard: React.FC<ColouringCardProps> = ({ item }) => {
   return (
-    <Link to="/catalog" className="">
+    <Link to={`/single-page/${item.category.parent_id}/${item.id}`} className="">
       <img className="w-full h-96 object-cover border-2 border-gray rounded-lg overflow-hidden" src={item.image} alt="" />
     </Link>
   );
