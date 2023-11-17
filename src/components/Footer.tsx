@@ -87,11 +87,11 @@ const Footer: React.FC = () => {
                 </li>
                 <li className="w-full m-0 mb-1 xl:mb-3">
                   <Link
-                    to="mailto:fakemail@gmail.com"
+                    to="mailto:support@kidquizit.com"
                     className="w-full text-right sm:text-left  m-0 sm:text-xl xl:text-2xl text-sm text-white font-main font-medium hover:text-yellow transition-all duration-300 flex justify-end sm:justify-start items-center space-x-2"
                   >
                     <AiOutlineMail className="text-sm sm:text-xl mr-2 xl:text-2xl xl:mr-3" />{" "}
-                    fakemail@gmail.com
+                    support@kidquizit.com
                   </Link>
                 </li>
               </ul>

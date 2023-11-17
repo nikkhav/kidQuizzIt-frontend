@@ -89,11 +89,11 @@ const Header: React.FC = () => {
                   </li>
                   <li className="w-full ">
                     <Link
-                      to="mailto:fakemail@gmail.com"
+                      to="mailto:support@kidquizit.com"
                       className="w-full text-left  m-0 text-xl text-white font-main font-medium hover:text-yellow transition-all duration-300 flex justify-start items-center space-x-2"
                     >
                       <AiOutlineMail className="text-xl mr-2" />{" "}
-                      fakemail@gmail.com
+                      support@kidquizit.com
                     </Link>
                   </li>
                 </ul>
@@ -244,7 +244,7 @@ const Header: React.FC = () => {
                           return (
                             <li className="text-left">
                               <Link
-                                to="/catalog"
+                                to={`/catalog${cat.id ? `/${cat.id}` : ""}`}
                                 className="text-left text-lg sm:text-xl md:text-3xl font-main text-white font-normal"
                               >
                                 {cat.title}
@@ -265,11 +265,11 @@ const Header: React.FC = () => {
                     </li>
                     <li className="w-full">
                       <Link
-                        to="mailto:fakemail@gmail.com"
+                        to="mailto:support@kidquizit.com"
                         className="w-full   m-0 text-xl text-white font-main font-medium hover:text-yellow transition-all duration-300 flex justify-center sm:justify-end items-center mt-4 sm:mt-0 space-x-2"
                       >
                         <AiOutlineMail className="text-xl mr-2" />{" "}
-                        fakemail@gmail.com
+                        support@kidquizit.com
                       </Link>
                     </li>
                   </ul>
