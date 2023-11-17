@@ -16,6 +16,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchProd }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         className="border-gray border-2 w-10/12 rounded-s-xl h-full outline-none px-8 text-xl font-main font-normal"
+        placeholder="Search here..."
       />
       <button
         onClick={changeProds}

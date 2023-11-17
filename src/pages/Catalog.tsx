@@ -33,7 +33,6 @@ const Catalog: React.FC = () => {
   useEffect(() => {
     fetchCategory()(dispatch);
   }, [dispatch]);
-
   // -----------------------
   const { quiz, errorQuiz, loadingQuiz } = useAppSelector(
     (state) => state.quiz
@@ -74,7 +73,6 @@ const Catalog: React.FC = () => {
 
   // -----------------------
   const haveProd = category && quiz && colouring && difference && why;
-  console.log(quiz);
   const [prod, setProd] = useState<allData[]>([]);
   useEffect(() => {
     if (haveProd) {
@@ -86,22 +84,26 @@ const Catalog: React.FC = () => {
   const searchProd = (value: string) => {
     const newProd: allData[] = [];
     quiz?.map((a) => {
-      if (a.title.includes(value)) {
+      if (a.title.toLocaleLowerCase().includes(value.toLocaleLowerCase())) {
         newProd.push(a);
       }
     });
     colouring?.map((a) => {
-      if (a.category.title.includes(value)) {
+      if (
+        a.category.title.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+      ) {
         newProd.push(a);
       }
     });
     difference?.map((a) => {
-      if (a.category.title.includes(value)) {
+      if (
+        a.category.title.toLocaleLowerCase().includes(value.toLocaleLowerCase())
+      ) {
         newProd.push(a);
       }
     });
     why?.map((a) => {
-      if (a.title.includes(value)) {
+      if (a.title.toLocaleLowerCase().includes(value.toLocaleLowerCase())) {
         newProd.push(a);
       }
     });

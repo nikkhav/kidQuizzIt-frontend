@@ -9,8 +9,24 @@
 li {
   margin-left: 0 !important;
 }
+
 body {
   min-height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: darkgrey lightgrey;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #00a900;
+  border: 0.5px solid #f9c126;
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-track {
+  background-color: lightgrey;
 }
 @tailwind base;
 @tailwind components;
@@ -93,4 +109,12 @@ body {
     bottom: 15px;
     right: 15px;
   }
+}
+
+.user-correct-answer {
+  background-color: #4caf50; /* Зеленый цвет для правильного ответа пользователя */
+}
+
+.user-incorrect-answer {
+  background-color: #f44336; /* Красный цвет для неправильного ответа пользователя */
 }

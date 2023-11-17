@@ -14,6 +14,9 @@ import logo from "../icons/logo-png-removebg-preview.png";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { fetchCategory } from "../store/actions/categoryAction";
 import Loading from "./Loading";
+import { setCatVariable } from "../store/actions/catAction";
+import { useDispatch, useSelector } from "react-redux";
+
 type navPagesType = {
   page: string;
   to: string;
@@ -60,6 +63,14 @@ const Header: React.FC = () => {
     setBurger(false);
     enableScroll();
   };
+  const defDisp = useDispatch();
+  const changeCat = async (id: any) => {
+    setDrop(false);
+    setBurger(false);
+    enableScroll();
+    // await defDisp(setCatVariable(id));
+  };
+
   return (
     <>
       {errorCategory && <p>{errorCategory}</p>}
@@ -152,6 +163,7 @@ const Header: React.FC = () => {
                                     <Link
                                       className="catalog-item"
                                       to="/catalog"
+                                      onClick={() => changeCat(cat.title)}
                                     >
                                       {cat.title}
                                     </Link>
@@ -164,6 +176,7 @@ const Header: React.FC = () => {
                                     <Link
                                       className="catalog-item"
                                       to="/catalog"
+                                      onClick={() => changeCat(cat.id)}
                                     >
                                       {cat.title}
                                     </Link>
@@ -231,7 +244,6 @@ const Header: React.FC = () => {
                               <Link
                                 to="/catalog"
                                 className="text-left text-lg sm:text-xl md:text-3xl font-main text-white font-normal"
-                                onClick={() => setBurger(false)}
                               >
                                 {cat.title}
                               </Link>
