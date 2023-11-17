@@ -32,7 +32,7 @@ const App: React.FC = () => {
       element: <Terms />,
     },
     {
-      path: "/catalog",
+      path: "/catalog/:id?",
       element: <Catalog />,
     },
     {

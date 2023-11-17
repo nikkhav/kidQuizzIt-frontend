@@ -14,8 +14,11 @@ import QuizCard from "../components/QuizCard";
 import ColouringCard from "../components/colouringCard";
 import { allData } from "../types/allData";
 import SearchInput from "../components/SearchInput";
+import { useParams } from "react-router-dom";
 
 const Catalog: React.FC = () => {
+  const params = useParams();
+  const catId = params.id ? params.id : "";
   const [currretCat, setCurrentCat] = useState<number | null>(null);
   const changeCat = (index: number) => {
     if (currretCat == index) {
@@ -77,10 +80,17 @@ const Catalog: React.FC = () => {
   useEffect(() => {
     if (haveProd) {
       const prods = [...quiz, ...colouring, ...difference, ...why];
-      const shuffledProds = prods.sort(() => Math.random() - 0.5);
-      setProd(shuffledProds);
+      if (catId) {
+        const newArr = prods.filter((a) => a.category.parent_id == +catId);
+        const shuffledProds = newArr.sort(() => Math.random() - 0.5);
+        setProd(shuffledProds);
+        return;
+      } else {
+        const shuffledProds = prods.sort(() => Math.random() - 0.5);
+        setProd(shuffledProds);
+      }
     }
-  }, [quiz, colouring, difference, why]);
+  }, [quiz, colouring, difference, why, catId]);
   const searchProd = (value: string) => {
     const newProd: allData[] = [];
     quiz?.map((a) => {
@@ -174,8 +184,8 @@ const Catalog: React.FC = () => {
           <Wrapper>
             <div>
               <SearchInput searchProd={searchProd} />
-              <div className="w-full my-10 flex justify-between items-start">
-                <div className="w-1/4 border-gray border-2 px-5 py-5 flex rounded-xl flex-col justify-start items-start gap-2">
+              <div className="w-full my-10 flex flex-col lg:flex-row justify-between items-start">
+                <div className="w-full md:w-3/4 lg:w-1/4 md:mx-auto mb-10 border-gray border-2 px-5 py-5 flex rounded-xl flex-col justify-start items-start gap-2">
                   {category.map((cat: any, index: number) => {
                     return (
                       <label key={index} className="w-full">
@@ -221,7 +231,7 @@ const Catalog: React.FC = () => {
                     );
                   })}
                 </div>
-                <div className="w-3/4 pl-5 grid grid-cols-3 gap-4">
+                <div className="w-full lg:w-3/4 lg:pl-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                   {prod.map((card: any) => {
                     if (card.category.parent_id == 4) {
                       return (

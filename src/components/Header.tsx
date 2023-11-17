@@ -63,12 +63,10 @@ const Header: React.FC = () => {
     setBurger(false);
     enableScroll();
   };
-  const defDisp = useDispatch();
   const changeCat = async (id: any) => {
     setDrop(false);
     setBurger(false);
     enableScroll();
-    // await defDisp(setCatVariable(id));
   };
 
   return (
@@ -162,7 +160,9 @@ const Header: React.FC = () => {
                                   >
                                     <Link
                                       className="catalog-item"
-                                      to="/catalog"
+                                      to={`/catalog${
+                                        cat.id ? `/${cat.id}` : ""
+                                      }`}
                                       onClick={() => changeCat(cat.title)}
                                     >
                                       {cat.title}
@@ -175,7 +175,9 @@ const Header: React.FC = () => {
                                   >
                                     <Link
                                       className="catalog-item"
-                                      to="/catalog"
+                                      to={`/catalog${
+                                        cat.id ? `/${cat.id}` : ""
+                                      }`}
                                       onClick={() => changeCat(cat.id)}
                                     >
                                       {cat.title}
