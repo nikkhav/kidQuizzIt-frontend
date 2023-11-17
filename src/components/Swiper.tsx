@@ -12,7 +12,7 @@ import { dataChanges } from "../types/dataChanges";
 import { differenceData } from "../types/DifferenceData";
 import { WhyItem } from "../types/whyItem";
 import { colouringData } from "../types/colouringData";
-import ColouringCard from "./colouringCard";
+import ColouringCard from "./ColouringCard";
 import DifferenceCard from "./DifferenceCard";
 import WhyCard from "./WhyCard";
 type MySwiperProps = {

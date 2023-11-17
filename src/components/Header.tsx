@@ -63,7 +63,7 @@ const Header: React.FC = () => {
     setBurger(false);
     enableScroll();
   };
-  const changeCat = async (id: any) => {
+  const changeCat = async () => {
     setDrop(false);
     setBurger(false);
     enableScroll();
@@ -163,7 +163,7 @@ const Header: React.FC = () => {
                                       to={`/catalog${
                                         cat.id ? `/${cat.id}` : ""
                                       }`}
-                                      onClick={() => changeCat(cat.title)}
+                                      onClick={changeCat}
                                     >
                                       {cat.title}
                                     </Link>
@@ -178,7 +178,7 @@ const Header: React.FC = () => {
                                       to={`/catalog${
                                         cat.id ? `/${cat.id}` : ""
                                       }`}
-                                      onClick={() => changeCat(cat.id)}
+                                      onClick={changeCat}
                                     >
                                       {cat.title}
                                     </Link>

@@ -11,7 +11,7 @@ import { fetchDifference } from "../store/actions/differenceAction";
 import DifferenceCard from "../components/DifferenceCard";
 import WhyCard from "../components/WhyCard";
 import QuizCard from "../components/QuizCard";
-import ColouringCard from "../components/colouringCard";
+import ColouringCard from "../components/ColouringCard";
 import { allData } from "../types/allData";
 import SearchInput from "../components/SearchInput";
 import { useParams } from "react-router-dom";
