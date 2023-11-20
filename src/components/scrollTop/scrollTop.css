@@ -1,0 +1,36 @@
+.scrollTop {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #009900;
+  background-color: #f9c126;
+  border-radius: 50% !important;
+  cursor: pointer;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 9999;
+  border: 1px solid #f9c126;
+  outline: none;
+  border-radius: 4px;
+}
+@media screen and (max-width: 768px) {
+  .scrollTop {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .scrollTop {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .scrollTop {
+    bottom: 15px;
+    right: 15px;
+  }
+}

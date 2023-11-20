@@ -1,4 +1,3 @@
-import { AboutData } from "../../types/AboutData";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { quizData } from "../../types/QuizData";
 

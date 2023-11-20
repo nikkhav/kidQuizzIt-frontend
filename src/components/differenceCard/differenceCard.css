@@ -1,0 +1,43 @@
+.difference_card {
+  width: 100%;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
+  -webkit-box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
+  -moz-box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
+  transition: 0.4s;
+}
+.difference_card:hover {
+  box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
+  -webkit-box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
+  -moz-box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
+}
+.difference_card img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+.difference_card img:first-of-type {
+  border-bottom: 1px solid #ccc;
+}
+@media screen and (max-width: 1024px) {
+  .difference_card {
+    height: 320px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .difference_card {
+    height: 270px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .difference_card {
+    height: 290px;
+  }
+}

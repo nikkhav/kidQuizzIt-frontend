@@ -1,0 +1,75 @@
+.swiper_component {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.swiper_title {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 80px;
+  font-weight: 600;
+  font-family: Fira Sans, sans-serif;
+  color: #1d1d1b;
+  font-size: 54px;
+}
+.swiper_title::before {
+  position: absolute;
+  content: "";
+  top: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 5px;
+  background-color: #008900;
+}
+.swiper_component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .swiper_title {
+    margin-top: 80px;
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  .swiper_title::before {
+    top: calc(100% + 7px);
+    width: 150px;
+    height: 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .swiper_title {
+    margin-top: 50px;
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  .swiper_title::before {
+    top: 100%;
+    width: 100px;
+    height: 4px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .swiper_title {
+    margin-top: 50px;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  .swiper_title::before {
+    top: 100%;
+    width: 100px;
+    height: 4px;
+  }
+
+}

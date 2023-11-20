@@ -1,0 +1,96 @@
+.swiper {
+  width: 100%;
+  height: 400px;
+  margin: 80px 0;
+  padding: 0 40px;
+  user-select: none;
+}
+.swiper-slide {
+  text-align: center;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #fff;
+  opacity: 0.5;
+  height: 400px !important;
+  top: 22px !important;
+  width: 40px !important;
+  pointer-events: all !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  z-index: 9999 !important;
+  color: rgb(0 153 0 / var(--tw-bg-opacity));
+  pointer-events: all !important;
+}
+.swiper-button-next {
+  right: 0 !important;
+}
+.swiper-button-prev {
+  left: 0 !important;
+}
+@media screen and (max-width: 1024px) {
+  .swiper {
+    height: 350px !important;
+    margin: 80px 0;
+    padding: 0 40px;
+    user-select: none;
+  }
+  .swiper-slide {
+    height: 350px !important;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: #fff;
+    opacity: 0.5;
+    height: 350px !important;
+    top: 22px !important;
+    width: 40px !important;
+    pointer-events: all !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .swiper {
+    height: 300px !important;
+    margin: 60px 0;
+    padding: 0 40px;
+    user-select: none;
+  }
+  .swiper-slide {
+    height: 300px !important;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: #fff;
+    opacity: 0.5;
+    height: 300px !important;
+    top: 22px !important;
+    width: 40px !important;
+    pointer-events: all !important;
+  }
+}
+@media screen and (max-width: 480px) {
+  .swiper {
+    height: 320px !important;
+    margin: 30px 0;
+    padding: 0 40px;
+    user-select: none;
+  }
+  .swiper-slide {
+    height: 320px !important;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: #fff;
+    opacity: 0.5;
+    height: 320px !important;
+    top: 22px !important;
+    width: 40px !important;
+    pointer-events: all !important;
+  }
+}

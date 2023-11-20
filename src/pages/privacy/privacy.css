@@ -1,0 +1,133 @@
+.pricacy {
+  min-height: 100vh;
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+.privacy_img {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.privacy_img img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+.privacy_text {
+  width: 65%;
+  padding-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+.privacy_text h2 {
+  color: #1d1d1b;
+  font-size: 48px;
+  font-weight: 500;
+  font-family: Fira Sans, sans-serif;
+}
+.privacy_text p:first-of-type {
+  color: #1d1d1b;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: Fira Sans, sans-serif;
+  margin-bottom: 20px;
+}
+.privacy_text p:first-of-type span {
+  color: #f9c126;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: Fira Sans, sans-serif;
+  margin-left: 10px;
+}
+.privacy_text h3 {
+  color: #1d1d1b;
+  font-size: 32px;
+  font-weight: 500;
+  font-family: Fira Sans, sans-serif;
+  margin-bottom: 20px;
+}
+.privacy_text p:last-of-type {
+  color: #1d1d1b;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 1px;
+  font-family: Fira Sans, sans-serif;
+}
+
+@media screen and (max-width: 1024px) {
+  .privacy_text h2 {
+    font-size: 36px;
+  }
+  .privacy_text p:first-of-type {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .privacy_text p:first-of-type span {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  .privacy_text h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .privacy_text p:last-of-type {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.7px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .pricacy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .privacy_img {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .privacy_img img {
+    width: 100%;
+    aspect-ratio: 1/0.6;
+  }
+  .privacy_text {
+    width: 100%;
+    padding-left: 0;
+  }
+  .privacy_text h3 {
+    text-align: center;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .privacy_text h2 {
+    font-size: 32px;
+  }
+  .privacy_text p:first-of-type {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .privacy_text p:first-of-type span {
+    display: block;
+    font-size: 16px;
+    margin-left: 0;
+  }
+  .privacy_text h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .privacy_text p:last-of-type {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.7px;
+  }
+}

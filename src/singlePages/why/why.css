@@ -1,0 +1,112 @@
+.answer {
+  width: 100%;
+  min-height: 70vh;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+.why_title {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  color: #1d1d1b;
+  font-size: 48px;
+  font-weight: 500;
+  font-family: Fira Sans, sans-serif;
+}
+.why_title::after {
+  position: absolute;
+  content: "";
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%);
+  width: 180px;
+  height: 5px;
+  background-color: #008900;
+}
+.show_btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.show_btn button {
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: 1px solid #00a900;
+  background-color: #00a900;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: Fira Sans, sans-serif;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.show_btn button:hover {
+  color: #f9c126;
+}
+.answer_hero {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.answer_hero p {
+  color: #1d1d1b;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: Fira Sans, sans-serif;
+  line-height: 28px;
+  text-align: justify;
+}
+.answer_hero img {
+  width: 100%;
+  aspect-ratio: 1/0.4;
+  object-fit: cover;
+  margin: 30px 0;
+}
+@media screen and (max-width: 1024px) {
+  .answer_hero {
+    width: 100%;
+  }
+  .answer {
+    padding: 70px 0;
+    gap: 50px;
+  }
+  .why_title {
+    font-size: 36px;
+  }
+  .why_title::after {
+    top: calc(100% + 10px);
+    width: 180px;
+    height: 4px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .answer {
+    padding: 40px 0;
+    gap: 50px;
+  }
+  .why_title {
+    font-size: 28px;
+  }
+  .why_title::after {
+    top: calc(100% + 10px);
+    width: 100px;
+    height: 4px;
+  }
+  .answer_hero p {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .answer_hero img {
+    width: 100%;
+    aspect-ratio: 1/0.7;
+  }
+}

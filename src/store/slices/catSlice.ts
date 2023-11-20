@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setCatVariable } from "../actions/catAction";
 
 interface catState {
   selectedCat: number | null;
