@@ -28,8 +28,8 @@ const MySwiper: React.FC<MySwiperProps> = ({
   const cardCounts: CardCountMap = {
     "(max-width: 480px)": 1,
     "(max-width: 760px)": 2,
-    "(max-width: 1200px)": 3,
-    "(min-width: 1200px)": 4,
+    "(max-width: 1024px)": 2,
+    "(min-width: 1200px)": 3,
   };
 
   const [currentCardCount, setCurrentCardCount] = useState<number>(4);

@@ -20,6 +20,7 @@ const Difference: React.FC<DifferenceProps> = ({ itemId, itemParentId }) => {
   const currentItem: differenceData | undefined = difference?.find(
     (a) => a.category.parent_id == itemParentId && a.id == itemId
   );
+  console.log(currentItem);
   return (
     <>
       {errorDifference && <p>{errorDifference}</p>}
@@ -27,18 +28,21 @@ const Difference: React.FC<DifferenceProps> = ({ itemId, itemParentId }) => {
       {difference && currentItem && (
         <div className="container">
           <div className="difference">
-            <h1 className="difference_title">{currentItem?.category.title}</h1>
+            <h1 className="difference_title">{currentItem?.title}</h1>
             <div className="difference_hero">
-              <img
-                src={currentItem.image1}
-                alt=""
-                className="w-full aspect-video md:h-full"
-              />
-              <img
-                src={currentItem.image2}
-                alt=""
-                className="w-full aspect-video md:h-full"
-              />
+              <div className="difference_images">
+                <img
+                  src={currentItem.image1}
+                  alt=""
+                  className="w-full aspect-video md:h-full"
+                />
+                <img
+                  src={currentItem.image2}
+                  alt=""
+                  className="w-full aspect-video md:h-full"
+                />
+              </div>
+              <p>{currentItem?.description}</p>
             </div>
           </div>
         </div>

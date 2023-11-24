@@ -5,7 +5,7 @@ import "./loading.css";
 const Loading:React.FC = () =>{
   return (
     <div className="loading">
-      <img src={loading} alt=""/>
+      <span className="loader"></span>
     </div>
   );
 }

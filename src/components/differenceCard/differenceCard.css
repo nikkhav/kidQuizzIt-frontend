@@ -13,6 +13,15 @@
   -moz-box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
   transition: 0.4s;
 }
+.difference_images_card{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height: 80%;
+  gap: 0;
+  width: 100%;
+}
 .difference_card:hover {
   box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
   -webkit-box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
@@ -22,6 +31,20 @@
   width: 100%;
   height: 50%;
   object-fit: cover;
+}
+.difference_card h2{
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  color: #1d1d1b;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: Fira Sans, sans-serif;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .difference_card img:first-of-type {
   border-bottom: 1px solid #ccc;

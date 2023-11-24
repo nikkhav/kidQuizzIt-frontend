@@ -1,15 +1,15 @@
 .coloration {
-  width: 100%;
+  width: 65%;
   min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 100px 0;
+  margin: 0 auto;
 }
 .coloration_title {
   width: 100%;
-  margin-bottom: 70px;
   text-align: center;
   position: relative;
   font-size: 64px;
@@ -30,12 +30,30 @@
 }
 .coloration img {
   width: 100%;
-  margin: 0 auto;
-  aspect-ratio: 1/1;
+  margin: 70px auto;
+  object-fit: contain;
+}
+.coloration button {
+  padding: 15px 25px;
+  border-radius: 7px;
+  background-color: #008900;
+  color: #fff;
+  border: 1px solid #008900;
+  transition: 0.4s;
+  font-size: 24px;
+  transition: 0.4s;
+  font-weight: 500;
+  font-family: Fira Sans, sans-serif;
+  cursor: pointer;
+}
+.coloration button:hover {
+  color: #008900;
+  background-color: #fff;
 }
 @media screen and (max-width: 768px) {
   .coloration {
     padding: 50px 0;
+    width: 100%;
   }
   .coloration_title {
     margin-bottom: 40px;
@@ -49,6 +67,13 @@
 }
 @media screen and (max-width: 480px) {
   .coloration {
-    padding: 0;
+    padding: 40px 0;
+  }
+  .coloration img {
+    margin: 40px auto;
+  }
+  .coloration button {
+    padding: 10px 20px;
+    font-size: 20px;
   }
 }

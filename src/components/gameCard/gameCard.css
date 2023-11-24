@@ -1,6 +1,10 @@
-.colouring_card {
+.game_card {
   width: 100%;
   height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid #ccc;
   border-radius: 10px;
   overflow: hidden;
@@ -8,44 +12,45 @@
   -webkit-box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
   -moz-box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
   transition: 0.4s;
-  display: inline-block;
 }
-.colouring_card:hover {
+.game_card:hover {
   box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
   -webkit-box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
   -moz-box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
 }
-.colouring_card img {
-  width: 100%;
+.game_card img {
   height: 80%;
   object-fit: cover;
 }
-.colouring_card h2 {
+.game_card h2 {
   width: 100%;
-  height: 20%;
+  padding: 5px 10px;
   text-align: center;
-  color: #1d1d1b;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   font-family: Fira Sans, sans-serif;
-  padding: 5px;
+  color: #1d1d1b;
+  height: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 @media screen and (max-width: 1024px) {
-  .colouring_card {
+  .game_card {
     height: 320px;
   }
 }
 @media screen and (max-width: 768px) {
-  .colouring_card {
+  .game_card {
     height: 270px;
   }
 }
 @media screen and (max-width: 480px) {
-  .colouring_card {
+  .game_card {
     height: 290px;
+  }
+  .game_card h2 {
+    font-size: 18px;
   }
 }

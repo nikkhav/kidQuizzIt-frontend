@@ -17,6 +17,10 @@ import { useParams } from "react-router-dom";
 import "./catalog.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { useClickOutSide } from "../../hooks/useClickOutSide";
+import { fetchFairy } from "../../store/actions/fairyAction";
+import { fetchGame } from "../../store/actions/gameAction";
+import TaleCard from "../../components/taleCard/TaleCard";
+import GameCard from "../../components/gameCard/GameCard";
 
 const Catalog: React.FC = () => {
   const params = useParams();
@@ -56,6 +60,21 @@ const Catalog: React.FC = () => {
   }, [dispatch]);
 
   // -----------------------
+  const { fairy, errorFairy, loadingFairy } = useAppSelector(
+    (state) => state.fairy
+  );
+  useEffect(() => {
+    fetchFairy()(dispatch);
+  }, [dispatch]);
+
+  // -----------------------
+  const { game, errorGame, loadingGame } = useAppSelector(
+    (state) => state.game
+  );
+  useEffect(() => {
+    fetchGame()(dispatch);
+  }, [dispatch]);
+  // -----------------------
   const { why, errorWhy, loadingWhy } = useAppSelector((state) => state.why);
   useEffect(() => {
     fetchWhy()(dispatch);
@@ -74,15 +93,25 @@ const Catalog: React.FC = () => {
     loadingCategory ||
     loadingQuiz ||
     loadingDifference ||
+    loadingFairy ||
     loadingColouring ||
+    loadingGame ||
     loadingWhy;
-
+    
   // -----------------------
-  const haveProd = category && quiz && colouring && difference && why;
+  const haveProd =
+    category && quiz && colouring && difference && fairy && why && game;
   const [prod, setProd] = useState<allData[]>([]);
   useEffect(() => {
     if (haveProd) {
-      const prods = [...quiz, ...colouring, ...difference, ...why];
+      const prods = [
+        ...quiz,
+        ...colouring,
+        ...difference,
+        ...why,
+        ...fairy,
+        ...game,
+      ];
       if (catId && catParentId) {
         const newArr = prods.filter(
           (a) => a.category.parent_id == +catParentId && a.category_id == +catId
@@ -95,7 +124,7 @@ const Catalog: React.FC = () => {
         setProd(shuffledProds);
       }
     }
-  }, [quiz, colouring, difference, why, catId]);
+  }, [quiz, colouring, difference, why, fairy, game, catId]);
   const searchProd = (value: string) => {
     const newProd: allData[] = [];
     quiz?.map((a) => {
@@ -191,6 +220,8 @@ const Catalog: React.FC = () => {
       {errorWhy && <p>{errorWhy}</p>}
       {errorDifference && <p>{errorDifference}</p>}
       {errorColouring && <p>{errorColouring}</p>}
+      {errorFairy && <p>{errorFairy}</p>}
+      {errorGame && <p>{errorGame}</p>}
       {isLoading && <Loading />}
       {haveProd && (
         <>
@@ -198,7 +229,7 @@ const Catalog: React.FC = () => {
             <div>
               <SearchInput searchProd={searchProd} />
               <div className="catalog">
-                <div
+                {/* <div
                   className={`catalog_filters ${
                     currretCat ? "catalog_filters_visible" : ""
                   }`}
@@ -251,7 +282,7 @@ const Catalog: React.FC = () => {
                       </label>
                     );
                   })}
-                </div>
+                </div> */}
                 <div className="catalog_container">
                   {prod.map((card: any) => {
                     if (card.category.parent_id == 4) {
@@ -271,6 +302,20 @@ const Catalog: React.FC = () => {
                     } else if (card.category.parent_id == 1) {
                       return (
                         <QuizCard
+                          key={`${card.category.parent_id}/${card.id}`}
+                          item={card}
+                        />
+                      );
+                    } else if (card.category.parent_id == 40) {
+                      return (
+                        <TaleCard
+                          key={`${card.category.parent_id}/${card.id}`}
+                          item={card}
+                        />
+                      );
+                    } else if (card.category.parent_id == 41) {
+                      return (
+                        <GameCard
                           key={`${card.category.parent_id}/${card.id}`}
                           item={card}
                         />

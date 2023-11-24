@@ -21,7 +21,6 @@ const Why: React.FC<WhyProps> = ({ itemId, itemParentId }) => {
   const currentItem: WhyItem | undefined = why?.find(
     (a) => a.category.parent_id == itemParentId && a.id == itemId
   );
-  const [answer, setAnswer] = useState<boolean>(false);
   return (
     <>
       {errorWhy && <p>{errorWhy}</p>}
@@ -30,33 +29,10 @@ const Why: React.FC<WhyProps> = ({ itemId, itemParentId }) => {
         <div className="container">
           <div className="answer">
             <h1 className="why_title">{currentItem.title}</h1>
-            {answer && (
-              <AnimatePresence>
-                <motion.div
-                  initial={{ y: -100 }}
-                  animate={{ y: 0 }}
-                  exit={{ y: -100 }}
-                  className="answer_hero"
-                >
-                  <p>{currentItem.description}</p>
-                  <img src={currentItem.image} alt="" />
-                  {currentItem.description2 && (
-                    <p>{currentItem.description2}</p>
-                  )}
-                  {currentItem.description3 && (
-                    <p>{currentItem.description3}</p>
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            )}
-            <div className="show_btn">
-              <button
-                className={`${answer ? "visible_btn" : ""}`}
-                onClick={() => setAnswer((answer) => !answer)}
-              >
-                {answer ? "Hide answer" : "Show answer"}
-              </button>
-            </div>
+            <img src={currentItem.image} alt="" />
+            <p>{currentItem.description}</p>
+            {currentItem.description2 && <p>{currentItem.description2}</p>}
+            {currentItem.description3 && <p>{currentItem.description3}</p>}
           </div>
         </div>
       )}

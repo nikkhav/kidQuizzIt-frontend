@@ -20,6 +20,22 @@ const Coloration: React.FC<ColorationProps> = ({ itemId, itemParentId }) => {
   const currentItem: colouringData | undefined = colouring?.find(
     (a) => a.category.parent_id == itemParentId && a.id == itemId
   );
+  const handleDownloadClick = () => {
+    if (currentItem) {
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = "blob";
+      xhr.onload = function () {
+        const a = document.createElement("a");
+        a.href = window.URL.createObjectURL(xhr.response);
+        a.download = "downloaded_image.jpg";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+      xhr.open("GET", currentItem.image);
+      xhr.send();
+    }
+  };
   return (
     <>
       {errorColouring && <p>{errorColouring}</p>}
@@ -27,8 +43,9 @@ const Coloration: React.FC<ColorationProps> = ({ itemId, itemParentId }) => {
       {colouring && currentItem && (
         <div className="container">
           <div className="coloration">
-            <h1 className="coloration_title">{currentItem.category.title}</h1>
+            <h1 className="coloration_title">{currentItem.title}</h1>
             <img src={currentItem.image} alt="" />
+            <button onClick={handleDownloadClick}>DOWNLOAD IMAGE</button>
           </div>
         </div>
       )}

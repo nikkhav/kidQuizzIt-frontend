@@ -14,33 +14,14 @@ const Footer: React.FC = () => {
             <Link to="/" className="foot_logo">
               <img src={logo} alt="" />
             </Link>
-            <div className="foot_2">
-              <Link to="/catalog">Catalog</Link>
-              <Link to="/about">About Us</Link>
-            </div>
             <div className="foot_3">
               <Link to="/privacy">Privacy and Policy</Link>
-              <Link to="/terms">Terms and condisions</Link>
+              <Link to="/terms">Terms and conditions</Link>
             </div>
-            <div className="foot_4">
-              <Link to="tel:79999999999">
-                <FaPhoneAlt />
-                +7-999-999-99-99
-              </Link>
-              <Link to="mailto:support@kidquizit.com">
-                <AiOutlineMail />
-                support@kidquizit.com
-              </Link>
+            <div className="copyright">
+              <h2>Copyright © YouGifted, LLC. All right reserved</h2>
             </div>
           </footer>
-        </div>
-      </div>
-      <div className="foot_line"></div>
-      <div className="copyright_bg">
-        <div className="container">
-          <div className="copyright">
-            <h2>© Page was last edited on 22 October 2023</h2>
-          </div>
         </div>
       </div>
     </>
