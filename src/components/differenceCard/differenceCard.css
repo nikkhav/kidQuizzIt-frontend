@@ -1,6 +1,6 @@
 .difference_card {
   width: 100%;
-  height: 370px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,11 +56,11 @@
 }
 @media screen and (max-width: 768px) {
   .difference_card {
-    height: 270px;
+    height: 320px;
   }
 }
 @media screen and (max-width: 480px) {
   .difference_card {
-    height: 290px;
+    height: 320px;
   }
 }

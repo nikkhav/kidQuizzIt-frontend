@@ -19,13 +19,11 @@ import { MdOutlinePets } from "react-icons/md";
 import { ImTarget } from "react-icons/im";
 import { MdContactPhone } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
+import { GiFairy } from "react-icons/gi";
+import { BsPatchQuestionFill } from "react-icons/bs";
 
 import { IoIosArrowDown } from "react-icons/io";
 
-type navPagesType = {
-  page: string;
-  to: string;
-};
 
 const Header: React.FC = () => {
   const handleNavItemHover = (index: number) => {
@@ -126,9 +124,13 @@ const Header: React.FC = () => {
                           ) : index == 1 ? (
                             <MdOutlinePets />
                           ) : index == 2 ? (
-                            <IoGameController />
-                          ) : (
+                            <BsPatchQuestionFill />
+                          ) : index == 3 ? (
                             <ImTarget />
+                          ) : index == 4 ? (
+                            <GiFairy />
+                          ) : (
+                            <IoGameController />
                           )}
                           <h3>{cat.title}</h3>
                         </div>

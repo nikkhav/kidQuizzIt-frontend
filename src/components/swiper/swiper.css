@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 750px;
   height: 400px;
-  margin: 80px auto;
+  margin: 0 auto 30px;
   padding: 0 40px;
   user-select: none;
 }
@@ -39,7 +39,7 @@
   .swiper {
     height: 350px !important;
     max-width: 600px;
-    margin: 80px auto;
+    margin: 20px auto 30px;
     padding: 0 40px;
     user-select: none;
   }
@@ -58,14 +58,14 @@
 }
 @media screen and (max-width: 768px) {
   .swiper {
-    height: 300px !important;
+    height: 330px !important;
     max-width: 100%;
-    margin: 60px 0;
+    margin: 30px auto;
     padding: 0 40px;
     user-select: none;
   }
   .swiper-slide {
-    height: 300px !important;
+    height: 320px !important;
   }
   .swiper-button-next,
   .swiper-button-prev {
@@ -80,7 +80,7 @@
 @media screen and (max-width: 480px) {
   .swiper {
     height: 320px !important;
-    margin: 30px 0;
+    margin: 20px auto 30px;
     padding: 0 40px;
     user-select: none;
   }

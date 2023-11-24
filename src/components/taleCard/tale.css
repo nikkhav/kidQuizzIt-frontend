@@ -1,6 +1,6 @@
 .tale_card {
   width: 100%;
-  height: 370px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,12 +43,12 @@
 }
 @media screen and (max-width: 768px) {
   .tale_card {
-    height: 270px;
+    height: 320px;
   }
 }
 @media screen and (max-width: 480px) {
   .tale_card {
-    height: 290px;
+    height: 320px;
   }
   .tale_card h2 {
     font-size: 18px;

@@ -4,18 +4,27 @@ import { differenceData } from "../../types/DifferenceData";
 import { WhyItem } from "../../types/whyItem";
 import { colouringData } from "../../types/colouringData";
 import "./swiperComponent.css";
+import { quizData } from "../../types/QuizData";
+import { fairyData } from "../../types/fairyData";
+import { gameData } from "../../types/gameData";
 
 type SwiperComponentProps = {
   title: string | null;
-  data?: WhyItem[] | null;
-  dataChanges?: differenceData[] | null;
+  why?: WhyItem[] | null;
+  difference?: differenceData[] | null;
   colouring?: colouringData[] | null;
+  quiz?: quizData[] | null;
+  fairy?: fairyData[] | null;
+  game?: gameData[] | null;
 };
 const SwiperComponent: React.FC<SwiperComponentProps> = ({
   title,
-  dataChanges,
-  data,
+  difference,
+  why,
   colouring,
+  quiz,
+  fairy,
+  game,
 }) => {
   return (
     <div className="swiper_component">
@@ -26,7 +35,14 @@ const SwiperComponent: React.FC<SwiperComponentProps> = ({
       ) : (
         ""
       )}
-      <MySwiper data={data} dataChanges={dataChanges} colouring={colouring} />
+      <MySwiper
+        fairy={fairy}
+        quiz={quiz}
+        why={why}
+        difference={difference}
+        colouring={colouring}
+        game={game}
+      />
     </div>
   );
 };

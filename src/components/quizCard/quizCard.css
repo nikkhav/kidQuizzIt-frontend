@@ -1,6 +1,6 @@
 .quiz_card {
   width: 100%;
-  height: 370px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,6 +31,10 @@
   font-family: Fira Sans, sans-serif;
   color: #1d1d1b;
   height: 20%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
 @media screen and (max-width: 1024px) {
@@ -39,13 +43,16 @@
   }
 }
 @media screen and (max-width: 768px) {
+  .quiz_card h2 {
+    font-size: 18px;
+  }
   .quiz_card {
-    height: 270px;
+    height: 320px;
   }
 }
 @media screen and (max-width: 480px) {
   .quiz_card {
-    height: 290px;
+    height: 320px;
   }
   .quiz_card h2 {
     font-size: 18px;
