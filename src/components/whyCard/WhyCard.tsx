@@ -13,7 +13,8 @@ const WhyCard: React.FC<WhyCardProps> = ({ item }) => {
       className="why_card"
     >
       <img src={item.image} alt="" />
-      <h2>{item.title}</h2>
+      <h2 
+      dangerouslySetInnerHTML={{ __html: item.title }}></h2>
     </Link>
   );
 };

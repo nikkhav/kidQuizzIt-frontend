@@ -29,9 +29,10 @@ const Tale: React.FC<TaleProps> = ({ itemId, itemParentId }) => {
       {fairy && currentItem && (
         <div className="container">
           <div className="tale">
-            <h1 className="tale_title">{currentItem.title}</h1>
+            <h1 className="tale_title" 
+            dangerouslySetInnerHTML={{ __html: currentItem.title }}></h1>
             <img src={currentItem.image} alt="" />
-            <p>{currentItem.description}</p>
+            <p dangerouslySetInnerHTML={{ __html: currentItem.description }}></p>
           </div>
         </div>
       )}

@@ -28,7 +28,8 @@ const Difference: React.FC<DifferenceProps> = ({ itemId, itemParentId }) => {
       {difference && currentItem && (
         <div className="container">
           <div className="difference">
-            <h1 className="difference_title">{currentItem?.title}</h1>
+            <h1 className="difference_title" 
+            dangerouslySetInnerHTML={{ __html: currentItem?.title }} ></h1>
             <div className="difference_hero">
               <div className="difference_images">
                 <img
@@ -42,7 +43,7 @@ const Difference: React.FC<DifferenceProps> = ({ itemId, itemParentId }) => {
                   className="w-full aspect-video md:h-full"
                 />
               </div>
-              <p>{currentItem?.description}</p>
+              <p dangerouslySetInnerHTML={{ __html: currentItem?.description }}></p>
             </div>
           </div>
         </div>

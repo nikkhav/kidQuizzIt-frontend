@@ -17,10 +17,17 @@ const About: React.FC = () => {
       {about && (
         <div className="container">
           <div className="about">
-            <h2 className="about_title">{about.title}</h2>
+            <h2
+              className="about_title"
+              dangerouslySetInnerHTML={{ __html: about.title }}
+            ></h2>
             <div className="about_hero">
               <img src={about.image} alt="" />
-              <p>{about.description}</p>
+              <h4
+                className="about_title"
+                dangerouslySetInnerHTML={{ __html: about.subtitle }}
+              ></h4>
+              <p dangerouslySetInnerHTML={{ __html: about.description }}></p>
             </div>
           </div>
         </div>

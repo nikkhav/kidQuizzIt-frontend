@@ -28,11 +28,12 @@ const Why: React.FC<WhyProps> = ({ itemId, itemParentId }) => {
       {why && currentItem && (
         <div className="container">
           <div className="answer">
-            <h1 className="why_title">{currentItem.title}</h1>
+            <h1 className="why_title" 
+            dangerouslySetInnerHTML={{ __html: currentItem.title }}></h1>
             <img src={currentItem.image} alt="" />
-            <p>{currentItem.description}</p>
-            {currentItem.description2 && <p>{currentItem.description2}</p>}
-            {currentItem.description3 && <p>{currentItem.description3}</p>}
+            <p dangerouslySetInnerHTML={{ __html: currentItem.description }}></p>
+            {currentItem.description2 && <p dangerouslySetInnerHTML={{ __html: currentItem.description2 }}></p>}
+            {currentItem.description3 && <p dangerouslySetInnerHTML={{ __html: currentItem.description3 }}></p>}
           </div>
         </div>
       )}

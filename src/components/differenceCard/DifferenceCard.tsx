@@ -16,7 +16,8 @@ const DifferenceCard: React.FC<DifferenceCardProps> = ({ item }) => {
         <img src={item.image1} alt="" />
         <img src={item.image1} alt="" />
       </div>
-      <h2>{item.title}</h2>
+      <h2 
+      dangerouslySetInnerHTML={{ __html: item.title }}></h2>
     </Link>
   );
 };

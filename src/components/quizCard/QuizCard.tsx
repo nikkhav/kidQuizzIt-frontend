@@ -14,7 +14,7 @@ const QuizCard: React.FC<QuizCardType> = ({ item }) => {
       className="quiz_card"
     >
       <img src={quizImg} alt="" />
-      <h2>{item.title}</h2>
+      <h2 dangerouslySetInnerHTML={{ __html: item.title }}></h2>
     </Link>
   );
 };

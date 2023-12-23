@@ -43,7 +43,10 @@ const Coloration: React.FC<ColorationProps> = ({ itemId, itemParentId }) => {
       {colouring && currentItem && (
         <div className="container">
           <div className="coloration">
-            <h1 className="coloration_title">{currentItem.title}</h1>
+            <h1
+              className="coloration_title"
+              dangerouslySetInnerHTML={{ __html: currentItem.title }}
+            ></h1>
             <img src={currentItem.image} alt="" />
             <button onClick={handleDownloadClick}>DOWNLOAD IMAGE</button>
           </div>

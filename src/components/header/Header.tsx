@@ -24,7 +24,6 @@ import { BsPatchQuestionFill } from "react-icons/bs";
 
 import { IoIosArrowDown } from "react-icons/io";
 
-
 const Header: React.FC = () => {
   const handleNavItemHover = (index: number) => {
     const navItems = document.querySelectorAll(`.nav_item`);
@@ -132,7 +131,9 @@ const Header: React.FC = () => {
                           ) : (
                             <IoGameController />
                           )}
-                          <h3>{cat.title}</h3>
+                          <h3
+                            dangerouslySetInnerHTML={{ __html: cat.title }}
+                          ></h3>
                         </div>
                         <div
                           onMouseEnter={() => handleNavItemHover(index)}
@@ -144,8 +145,8 @@ const Header: React.FC = () => {
                               <Link
                                 key={`${a.title}${a.id}${a.parent_id}`}
                                 to={`/catalog/${a.parent_id}/${a.id}`}
+                                dangerouslySetInnerHTML={{ __html: a.title }}
                               >
-                                {a.title}
                               </Link>
                             );
                           })}

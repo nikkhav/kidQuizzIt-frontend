@@ -52,13 +52,13 @@ const Questions: React.FC<QuestionsProps> = ({ itemId, itemParentId }) => {
         <>
           <div className="container">
             <div className="questions">
-              <h1 className="questions_title">{currentItem.title}</h1>
+              <h1 className="questions_title" dangerouslySetInnerHTML={{ __html: currentItem.title }}></h1>
               <QuestionsContainer
                 questions={currentItem}
                 showResults={showResults}
                 onAnswerSelect={handleAnswerSelect}
               />
-              <div className="view_answer">
+              <div className="view_answer"> 
                 {answerError && (
                   <p className="questions_error">
                     Choose answers for the all questions

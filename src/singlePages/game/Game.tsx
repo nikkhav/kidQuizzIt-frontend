@@ -29,9 +29,9 @@ const Game: React.FC<GameProps> = ({ itemId, itemParentId }) => {
       {game && currentItem && (
         <div className="container">
           <div className="game">
-            <h1 className="game_title">{currentItem.title}</h1>
+            <h1 className="game_title" dangerouslySetInnerHTML={{ __html: currentItem.title }}></h1>
             <img src={currentItem.image} alt="" />
-            <p>{currentItem.description}</p>
+            <p dangerouslySetInnerHTML={{ __html: currentItem.description }}></p>
           </div>
         </div>
       )}
