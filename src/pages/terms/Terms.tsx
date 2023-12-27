@@ -43,7 +43,7 @@ const Privacy: React.FC = () => {
                   <span>{formattedDate}</span>
                 </p>
                 <h3>SCOPE OF THIS TERMS</h3>
-                <p>{terms.description}</p>
+                <p  dangerouslySetInnerHTML={{ __html: terms.description }}></p>
               </div>
             </div>
           </div>

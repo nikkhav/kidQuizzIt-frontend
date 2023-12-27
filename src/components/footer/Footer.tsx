@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
             </Link>
             <div className="foot_3">
               <Link to="/privacy">Privacy and Policy</Link>
-              <Link to="/terms">Terms and conditions</Link>
+              <Link to="/terms">Terms and Conditions</Link>
             </div>
             <div className="copyright">
               <h2>Copyright © YouGifted, LLC. All right reserved</h2>
