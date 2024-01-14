@@ -197,7 +197,7 @@ const Header: React.FC = () => {
                                     onClick={() => changeCurrentCat(index)}
                                   >
                                     <div className="burger_cat_item_title">
-                                      <p>{cat.title}</p>
+                                      <p dangerouslySetInnerHTML={{ __html: cat.title }}></p>
                                       <IoIosArrowDown />
                                     </div>
                                     {catItem == index && (
@@ -215,7 +215,7 @@ const Header: React.FC = () => {
                                                 to={`/catalog/${a.parent_id}/${a.id}`}
                                                 onClick={changePage}
                                               >
-                                                {a.title}
+                                                 <p dangerouslySetInnerHTML={{ __html: a.title }}></p>
                                               </Link>
                                             );
                                           })}
