@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchGame } from "../../store/actions/gameAction";
 import { gameData } from "../../types/gameData";
 import Loading from "../../components/loading/Loading";
-import "./game.css"
+import "./game.css";
 
 type GameProps = {
   itemId: number;
@@ -14,14 +14,21 @@ const Game: React.FC<GameProps> = ({ itemId, itemParentId }) => {
   const dispatch = useAppDispatch();
 
   const { game, loadingGame, errorGame } = useAppSelector(
-    (state) => state.game
+    (state) => state.game,
   );
   useEffect(() => {
     fetchGame()(dispatch);
   }, [dispatch]);
   const currentItem: gameData | undefined = game?.find(
-    (a) => a.category.parent_id == itemParentId && a.id == itemId
+    (a) => a.category.parent_id == itemParentId && a.id == itemId,
   );
+
+  let displayTitle = currentItem ? currentItem.title : "";
+
+  // Check if the title contains <p> tags and remove them
+  if (displayTitle.includes("<p>")) {
+    displayTitle = displayTitle.replace(/<p>/g, "").replace(/<\/p>/g, "");
+  }
   return (
     <>
       {errorGame && <p>{errorGame}</p>}
@@ -29,9 +36,14 @@ const Game: React.FC<GameProps> = ({ itemId, itemParentId }) => {
       {game && currentItem && (
         <div className="container">
           <div className="game">
-            <h1 className="game_title" dangerouslySetInnerHTML={{ __html: currentItem.title }}></h1>
+            <h1
+              className="game_title"
+              dangerouslySetInnerHTML={{ __html: displayTitle }}
+            ></h1>
             <img src={currentItem.image} alt="" />
-            <p dangerouslySetInnerHTML={{ __html: currentItem.description }}></p>
+            <p
+              dangerouslySetInnerHTML={{ __html: currentItem.description }}
+            ></p>
           </div>
         </div>
       )}

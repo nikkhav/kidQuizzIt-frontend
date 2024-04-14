@@ -45,8 +45,8 @@
   width: 100%;
 }
 .difference_hero img {
-  width: calc((100% - 30px) / 2);
-  aspect-ratio: 1/1;
+  width: 100%;
+  object-fit: contain;
 }
 .difference_hero p {
   color: #1d1d1b;

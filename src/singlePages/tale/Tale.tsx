@@ -14,14 +14,21 @@ const Tale: React.FC<TaleProps> = ({ itemId, itemParentId }) => {
   const dispatch = useAppDispatch();
 
   const { fairy, loadingFairy, errorFairy } = useAppSelector(
-    (state) => state.fairy
+    (state) => state.fairy,
   );
   useEffect(() => {
     fetchGame()(dispatch);
   }, [dispatch]);
   const currentItem: fairyData | undefined = fairy?.find(
-    (a) => a.category.parent_id == itemParentId && a.id == itemId
+    (a) => a.category.parent_id == itemParentId && a.id == itemId,
   );
+
+  let displayTitle = currentItem ? currentItem.title : "";
+
+  // Check if the title contains <p> tags and remove them
+  if (displayTitle.includes("<p>")) {
+    displayTitle = displayTitle.replace(/<p>/g, "").replace(/<\/p>/g, "");
+  }
   return (
     <>
       {errorFairy && <p>{errorFairy}</p>}
@@ -29,10 +36,14 @@ const Tale: React.FC<TaleProps> = ({ itemId, itemParentId }) => {
       {fairy && currentItem && (
         <div className="container">
           <div className="tale">
-            <h1 className="tale_title" 
-            dangerouslySetInnerHTML={{ __html: currentItem.title }}></h1>
+            <h1
+              className="tale_title"
+              dangerouslySetInnerHTML={{ __html: displayTitle }}
+            ></h1>
             <img src={currentItem.image} alt="" />
-            <p dangerouslySetInnerHTML={{ __html: currentItem.description }}></p>
+            <p
+              dangerouslySetInnerHTML={{ __html: currentItem.description }}
+            ></p>
           </div>
         </div>
       )}

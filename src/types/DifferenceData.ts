@@ -6,6 +6,5 @@ export interface differenceData {
   id: number;
   title: string;
   description: string;
-  image1: string;
-  image2: string;
+  image: string;
 }

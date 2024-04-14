@@ -4,12 +4,10 @@ import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useClickOutSide } from "../../hooks/useClickOutSide";
 import { useRef } from "react";
-import { FaPhoneAlt } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { HiMenu } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { disableScroll, enableScroll } from "../../hooks/scrool";
-import logo from "../../icons/logo-png-removebg-preview.png";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { fetchCategory } from "../../store/actions/categoryAction";
 import Loading from "../loading/Loading";
@@ -41,7 +39,7 @@ const Header: React.FC = () => {
   };
   const dispatch = useAppDispatch();
   const { category, errorCategory, loadingCategory } = useAppSelector(
-    (state) => state.category
+    (state) => state.category,
   );
   useEffect(() => {
     fetchCategory()(dispatch);
@@ -89,9 +87,11 @@ const Header: React.FC = () => {
           <div className="header_top_bg">
             <div className="container">
               <div className="header_top">
-                <Link to="/" className="logo_link">
-                  <img src={logo} className="logo" alt="" />
-                </Link>
+                {/*<Link to="/">*/}
+                {/*  <h1 className={"logo-text"}>KidQuizIt</h1>*/}
+                {/*  /!*<img src={logo} className="logo" alt="" />*!/*/}
+                {/*</Link>*/}
+
                 <Link to="/about" className="else_links">
                   <BsFillPeopleFill />
                   <h3>About us</h3>
@@ -108,7 +108,8 @@ const Header: React.FC = () => {
             <div className="container">
               <header>
                 <Link to="/">
-                  <img src={logo} className="logo" alt="" />
+                  <h1 className={"logo-text"}>KidQuizIt</h1>
+                  {/*<img src={logo} className="logo" alt="" />*/}
                 </Link>
                 <nav>
                   {category.map((cat, index) => {
@@ -146,8 +147,7 @@ const Header: React.FC = () => {
                                 key={`${a.title}${a.id}${a.parent_id}`}
                                 to={`/catalog/${a.parent_id}/${a.id}`}
                                 dangerouslySetInnerHTML={{ __html: a.title }}
-                              >
-                              </Link>
+                              ></Link>
                             );
                           })}
                         </div>
@@ -172,12 +172,16 @@ const Header: React.FC = () => {
                     <div className="burger_container">
                       <div className="container">
                         <div className="burger_hero">
-                          <Link
-                            to="/"
-                            className="logo_burger"
-                            onClick={changePage}
-                          >
-                            <img src={logo} alt="" />
+                          {/*<Link*/}
+                          {/*  to="/"*/}
+                          {/*  className="logo_burger"*/}
+                          {/*  onClick={changePage}*/}
+                          {/*>*/}
+                          {/*  <img src={logo} alt="" />*/}
+                          {/*</Link>*/}
+                          <Link to="/" onClick={changePage}>
+                            <h1 className={"logo-text"}>KidQuizIt</h1>
+                            {/*<img src={logo} className="logo" alt="" />*/}
                           </Link>
                           <div className="burger_links">
                             <div className="burger_links_standart">
@@ -197,7 +201,11 @@ const Header: React.FC = () => {
                                     onClick={() => changeCurrentCat(index)}
                                   >
                                     <div className="burger_cat_item_title">
-                                      <p dangerouslySetInnerHTML={{ __html: cat.title }}></p>
+                                      <p
+                                        dangerouslySetInnerHTML={{
+                                          __html: cat.title,
+                                        }}
+                                      ></p>
                                       <IoIosArrowDown />
                                     </div>
                                     {catItem == index && (
@@ -215,7 +223,11 @@ const Header: React.FC = () => {
                                                 to={`/catalog/${a.parent_id}/${a.id}`}
                                                 onClick={changePage}
                                               >
-                                                 <p dangerouslySetInnerHTML={{ __html: a.title }}></p>
+                                                <p
+                                                  dangerouslySetInnerHTML={{
+                                                    __html: a.title,
+                                                  }}
+                                                ></p>
                                               </Link>
                                             );
                                           })}
@@ -228,13 +240,9 @@ const Header: React.FC = () => {
                             </div>
                           </div>
                           <div className="contact_burger">
-                            <Link to="#">
-                              <FaPhoneAlt />
-                              +79999999999
-                            </Link>
-                            <Link to="#">
+                            <Link to="mailto:support@kidquizit.com">
                               <AiOutlineMail />
-                              fake@mail.ru
+                              support@kidquizit.com
                             </Link>
                           </div>
                         </div>

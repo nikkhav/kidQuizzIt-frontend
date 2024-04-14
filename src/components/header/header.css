@@ -1,11 +1,12 @@
 .header_top_bg {
   width: 100%;
-  height: 50px;
+  /*height: 50px;*/
+  padding: 10px 0;
   background-color: #008900;
 }
 .header_top {
   width: 100%;
-  height: 50px;
+  /*height: 50px;*/
   display: flex;
   justify-content: flex-end;
   gap: 40px;
@@ -35,25 +36,42 @@
 }
 .header_bg {
   width: 100%;
-  height: 100px;
+  /*height: 100px;*/
   background-color: #00a900;
   position: relative;
 }
 header {
   width: 100%;
-  height: 100px;
+  /*height: 150px;*/
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding: 10px 0;
 }
 header > a {
-  width: 15%;
-  height: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto; /* Adjust as per layout requirements */
+  padding: 10px; /* Optional, for some breathing room */
+
 }
 .logo {
-  width: 100%;
-  height: 100%;
+  height: 100px;
+  max-width: 100%;
+  object-fit: contain;
+
 }
+
+.logo-text {
+    font-size: 40px;
+    font-weight: 500;
+    font-family: Fira Sans, sans-serif;
+    color: #fff;
+    margin-left: 10px;
+}
+
 nav {
   margin-left: 70px;
   display: flex;
@@ -80,7 +98,7 @@ nav {
   transition: 0.4s;
   position: relative;
   height: 100%;
-} 
+}
 
 .nav_item:hover h3,
 .nav_item:hover svg,
@@ -208,7 +226,7 @@ nav {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   align-items: center;
   padding: 20px 0;
 }
@@ -226,6 +244,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: 40px;
+  margin-top: 20px;
 }
 .burger_links_standart {
   width: 100%;
@@ -327,17 +346,21 @@ nav {
 .contact_burger a:last-of-type svg {
   font-size: 22px;
 }
-.header_top > a:first-of-type{
-  display: none;
-}
+/*.header_top > a:first-of-type{*/
+/*  display: none;*/
+/*}*/
 @media screen and (max-width: 1024px) {
 
-  .header_top_bg {
-    height: 60px;
+  .logo {
+    height: 80px;
   }
-  .header_top {
-    height: 60px;
-  }
+
+  /*.header_top_bg {*/
+  /*  height: 60px;*/
+  /*}*/
+  /*.header_top {*/
+  /*  height: 60px;*/
+  /*}*/
   .header_top a h3{
     font-size: 20px;
   }
@@ -373,6 +396,9 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
+    .logo {
+        height: 70px;
+    }
   header > a{
     display: block;
   }
@@ -385,10 +411,6 @@ nav {
   .line {
     display: none;
   }
-  header > a {
-    width: 30%;
-    height: 80%;
-  }
   .burger_btn {
     display: block;
   }
@@ -396,22 +418,20 @@ nav {
     font-size: 42px;
     color: #f9c126;
   }
-  .header_bg {
-    height: 80px;
-  }
+
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+
   }
   .burger {
     display: flex;
   }
-  header > a {
-    width: 35%;
-    height: 85%;
-  }
+  /*header > a {*/
+  /*  width: 35%;*/
+  /*  height: 85%;*/
+  /*}*/
 }
 @media screen and (max-width: 480px) {
   .contact_burger{

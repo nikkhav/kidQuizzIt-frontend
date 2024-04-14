@@ -9,7 +9,8 @@ type GameCardProps = {
 const GameCard: React.FC<GameCardProps> = ({ item }) => {
   return (
     <Link
-      to={`/single-page/${item.category.parent_id}/${item.id}`}
+      // to={`/single-page/${item.category.parent_id}/${item.id}`}
+      to={`/catalog/${item.category.parent_id}/${item.category.id}`}
       className="game_card"
     >
       <img src={item.image} alt="" />

@@ -1,6 +1,6 @@
 import React from "react";
 import { fairyData } from "../../types/fairyData";
-import "./tale.css"
+import "./tale.css";
 import { Link } from "react-router-dom";
 
 type TaleCardProps = {
@@ -8,10 +8,13 @@ type TaleCardProps = {
 };
 const TaleCard: React.FC<TaleCardProps> = ({ item }) => {
   return (
-    <Link to={`/single-page/${item.category.parent_id}/${item.id}`} className="tale_card">
+    <Link
+      // to={`/single-page/${item.category.parent_id}/${item.id}`}
+      to={`/catalog/${item.category.parent_id}/${item.category.id}`}
+      className="tale_card"
+    >
       <img src={item.image} alt="" />
-      <h2 dangerouslySetInnerHTML={{ __html: item.title }}
-      ></h2>
+      <h2 dangerouslySetInnerHTML={{ __html: item.title }}></h2>
     </Link>
   );
 };

@@ -14,6 +14,18 @@
   align-items: center;
   user-select: none;
 }
+.swiper_title {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-weight: 600;
+  font-family: Fira Sans, sans-serif;
+  color: #1d1d1b;
+  font-size: 54px;
+}
 .swiper-button-next,
 .swiper-button-prev {
   background-color: #fff;
