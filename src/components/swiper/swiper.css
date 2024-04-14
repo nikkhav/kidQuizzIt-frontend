@@ -55,6 +55,9 @@
     padding: 0 40px;
     user-select: none;
   }
+  .swiper_title {
+    font-size: 48px;
+  }
   .swiper-slide {
     height: 350px !important;
   }
@@ -79,6 +82,9 @@
   .swiper-slide {
     height: 320px !important;
   }
+  .swiper_title {
+    font-size: 48px;
+  }
   .swiper-button-next,
   .swiper-button-prev {
     background-color: #fff;
@@ -95,6 +101,9 @@
     margin: 20px auto 30px;
     padding: 0 40px;
     user-select: none;
+  }
+  .swiper_title {
+    font-size: 36px;
   }
   .swiper-slide {
     height: 320px !important;

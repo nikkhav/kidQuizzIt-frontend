@@ -34,8 +34,7 @@ const QuizCard: React.FC<QuizCardType> = ({ item }) => {
   };
   return (
     <Link
-      // to={`/single-page/${item.category.parent_id}/${item.id}`}
-      to={`/catalog/${item.category.parent_id}/${item.category.id}`}
+      to={`/single-page/${item.category.parent_id}/${item.id}`}
       className="quiz_card"
     >
       <img

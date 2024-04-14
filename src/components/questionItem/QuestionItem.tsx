@@ -24,7 +24,10 @@ const QuestionItem: React.FC<QuestionItemProps> = ({
   };
   return (
     <div className="question_item">
-      <h2 className="question_item_title" dangerouslySetInnerHTML={{ __html: ques.question_text }}></h2>
+      <h2
+        className="question_item_title"
+        dangerouslySetInnerHTML={{ __html: ques.question_text }}
+      ></h2>
       <ul>
         {answers.map((answerItem, i) => {
           const isCorrect = answerItem.is_correct;
@@ -35,6 +38,10 @@ const QuestionItem: React.FC<QuestionItemProps> = ({
             inputStyle = isUserCorrect
               ? "user-correct-answer"
               : "user-incorrect-answer";
+          }
+
+          if (isCorrect && showResults && !isSelected) {
+            inputStyle = "user-correct-answer";
           }
           return (
             <label
@@ -48,7 +55,9 @@ const QuestionItem: React.FC<QuestionItemProps> = ({
                 onClick={() => handleAnswerSelect(i)}
                 disabled={showResults}
               />
-              <p dangerouslySetInnerHTML={{ __html: answerItem.answer_text }}></p>
+              <p
+                dangerouslySetInnerHTML={{ __html: answerItem.answer_text }}
+              ></p>
             </label>
           );
         })}

@@ -9,8 +9,7 @@ type ColouringCardProps = {
 const ColouringCard: React.FC<ColouringCardProps> = ({ item }) => {
   return (
     <Link
-      // to={`/single-page/${item.category.parent_id}/${item.id}`}
-      to={`/catalog/${item.category.parent_id}/${item.category.id}`}
+      to={`/single-page/${item.category.parent_id}/${item.id}`}
       className="colouring_card"
     >
       <img className="" src={item.image} alt="" />
