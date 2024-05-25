@@ -154,12 +154,21 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
 
     return categoryImageDefault;
   };
+
+  const imageSrc = getImageForCategory(item);
+  const altText = item.title;
   return (
     <Link
       to={`/catalog/${item.parent_id}/${item.id}`}
       className={"category_card"}
     >
-      <img loading={"lazy"} src={getImageForCategory(item)} alt={item.title} />
+      <img
+        loading="lazy"
+        src={imageSrc}
+        sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
+        alt={altText}
+        style={{ width: "100%", height: "auto" }}
+      />
       <h2 dangerouslySetInnerHTML={{ __html: item.title }}></h2>
     </Link>
   );

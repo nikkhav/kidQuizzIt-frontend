@@ -8,9 +8,6 @@ import { AiOutlineMail } from "react-icons/ai";
 import { HiMenu } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { disableScroll, enableScroll } from "../../hooks/scrool";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { fetchCategory } from "../../store/actions/categoryAction";
-import Loading from "../loading/Loading";
 import { IoGameController } from "react-icons/io5";
 import { FaPlayCircle } from "react-icons/fa";
 import { MdOutlinePets } from "react-icons/md";
@@ -21,8 +18,11 @@ import { GiFairy } from "react-icons/gi";
 import { BsPatchQuestionFill } from "react-icons/bs";
 
 import { IoIosArrowDown } from "react-icons/io";
+import axios from "../../axios";
+import { categoryData } from "../../types/categoryData.ts";
 
 const Header: React.FC = () => {
+  const [categories, setCategories] = useState([]);
   const handleNavItemHover = (index: number) => {
     const navItems = document.querySelectorAll(`.nav_item`);
     const navItem = navItems[index];
@@ -37,13 +37,19 @@ const Header: React.FC = () => {
       navItem.classList.remove("hovered");
     });
   };
-  const dispatch = useAppDispatch();
-  const { category, errorCategory, loadingCategory } = useAppSelector(
-    (state) => state.category,
-  );
+
+  const getCategories = async () => {
+    try {
+      const response = await axios.get("category");
+      setCategories(response.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   useEffect(() => {
-    fetchCategory()(dispatch);
-  }, [dispatch]);
+    getCategories();
+  }, []);
 
   const dropRef = useRef(null);
   const [drop, setDrop] = useState<boolean>(false);
@@ -73,16 +79,14 @@ const Header: React.FC = () => {
     enableScroll();
   };
 
-  const changeCat = () => {
-    setDrop(false);
-    setBurger(false);
-    enableScroll();
-  };
+  // const changeCat = () => {
+  //   setDrop(false);
+  //   setBurger(false);
+  //   enableScroll();
+  // };
   return (
     <>
-      {errorCategory && <p>{errorCategory}</p>}
-      {loadingCategory && <Loading />}
-      {category && (
+      {categories && (
         <>
           <div className="header_top_bg">
             <div className="container">
@@ -112,7 +116,7 @@ const Header: React.FC = () => {
                   {/*<img src={logo} className="logo" alt="" />*/}
                 </Link>
                 <nav>
-                  {category.map((cat, index) => {
+                  {categories.map((cat: categoryData, index) => {
                     return (
                       <>
                         <div
@@ -193,50 +197,52 @@ const Header: React.FC = () => {
                               </Link>
                             </div>
                             <div className="burger_links_cat">
-                              {category.map((cat, index: number) => {
-                                return (
-                                  <div
-                                    key={`${cat.id}${cat.title}${index}`}
-                                    className="burger_cat_item"
-                                    onClick={() => changeCurrentCat(index)}
-                                  >
-                                    <div className="burger_cat_item_title">
-                                      <p
-                                        dangerouslySetInnerHTML={{
-                                          __html: cat.title,
-                                        }}
-                                      ></p>
-                                      <IoIosArrowDown />
+                              {categories.map(
+                                (cat: categoryData, index: number) => {
+                                  return (
+                                    <div
+                                      key={`${cat.id}${cat.title}${index}`}
+                                      className="burger_cat_item"
+                                      onClick={() => changeCurrentCat(index)}
+                                    >
+                                      <div className="burger_cat_item_title">
+                                        <p
+                                          dangerouslySetInnerHTML={{
+                                            __html: cat.title,
+                                          }}
+                                        ></p>
+                                        <IoIosArrowDown />
+                                      </div>
+                                      {catItem == index && (
+                                        <AnimatePresence>
+                                          <motion.div
+                                            initial={{ y: "-30%" }}
+                                            animate={{ y: "0" }}
+                                            exit={{ y: "-30%" }}
+                                            className="burger_cat_dropdown"
+                                          >
+                                            {cat.child_categories.map((a) => {
+                                              return (
+                                                <Link
+                                                  key={`${a.id}${a.title}${a.parent_id}`}
+                                                  to={`/catalog/${a.parent_id}/${a.id}`}
+                                                  onClick={changePage}
+                                                >
+                                                  <p
+                                                    dangerouslySetInnerHTML={{
+                                                      __html: a.title,
+                                                    }}
+                                                  ></p>
+                                                </Link>
+                                              );
+                                            })}
+                                          </motion.div>
+                                        </AnimatePresence>
+                                      )}
                                     </div>
-                                    {catItem == index && (
-                                      <AnimatePresence>
-                                        <motion.div
-                                          initial={{ y: "-30%" }}
-                                          animate={{ y: "0" }}
-                                          exit={{ y: "-30%" }}
-                                          className="burger_cat_dropdown"
-                                        >
-                                          {cat.child_categories.map((a) => {
-                                            return (
-                                              <Link
-                                                key={`${a.id}${a.title}${a.parent_id}`}
-                                                to={`/catalog/${a.parent_id}/${a.id}`}
-                                                onClick={changePage}
-                                              >
-                                                <p
-                                                  dangerouslySetInnerHTML={{
-                                                    __html: a.title,
-                                                  }}
-                                                ></p>
-                                              </Link>
-                                            );
-                                          })}
-                                        </motion.div>
-                                      </AnimatePresence>
-                                    )}
-                                  </div>
-                                );
-                              })}
+                                  );
+                                },
+                              )}
                             </div>
                           </div>
                           <div className="contact_burger">
