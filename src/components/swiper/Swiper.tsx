@@ -74,23 +74,35 @@ const MySwiper: React.FC<MySwiperProps> = () => {
   };
 
   useEffect(() => {
-    const handleMediaChange = () => {
-      for (const mediaQuery in spaceCounts) {
+    function handleMediaChange() {
+      let newCardCount = currentCardCount;
+      let newSpaceCount = currentSpaceCount;
+      for (const mediaQuery in cardCounts) {
         if (window.matchMedia(mediaQuery).matches) {
-          setCurrentSpaceCount(spaceCounts[mediaQuery]);
+          newCardCount = cardCounts[mediaQuery];
           break;
         }
       }
-    };
+      for (const mediaQuery in spaceCounts) {
+        if (window.matchMedia(mediaQuery).matches) {
+          newSpaceCount = spaceCounts[mediaQuery];
+          break;
+        }
+      }
+      if (
+        newCardCount !== currentCardCount ||
+        newSpaceCount !== currentSpaceCount
+      ) {
+        setCurrentCardCount(newCardCount);
+        setCurrentSpaceCount(newSpaceCount);
+      }
+    }
 
     window.addEventListener("resize", handleMediaChange);
+    handleMediaChange(); // Initial check
 
-    handleMediaChange();
-
-    return () => {
-      window.removeEventListener("resize", handleMediaChange);
-    };
-  }, []);
+    return () => window.removeEventListener("resize", handleMediaChange);
+  }, [cardCounts, spaceCounts]);
 
   return (
     <>

@@ -159,7 +159,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
       to={`/catalog/${item.parent_id}/${item.id}`}
       className={"category_card"}
     >
-      <img src={getImageForCategory(item)} alt={item.title} />
+      <img loading={"lazy"} src={getImageForCategory(item)} alt={item.title} />
       <h2 dangerouslySetInnerHTML={{ __html: item.title }}></h2>
     </Link>
   );
