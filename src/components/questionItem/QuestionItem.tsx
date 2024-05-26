@@ -47,6 +47,7 @@ const QuestionItem: React.FC<QuestionItemProps> = ({
             <label
               htmlFor={`answer_item_${index}${i}`}
               className={`question_label ${showResults ? inputStyle : ""}`}
+              key={i}
             >
               <input
                 type="radio"
