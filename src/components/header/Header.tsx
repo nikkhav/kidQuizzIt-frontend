@@ -112,7 +112,7 @@ const Header: React.FC = () => {
             <div className="container">
               <header>
                 <Link to="/">
-                  <h1 className={"logo-text"}>KidQuizIt</h1>
+                  <h1 className={"logoText"}>KidQuizIt</h1>
                   {/*<img src={logo} className="logo" alt="" />*/}
                 </Link>
                 <nav>
@@ -184,7 +184,7 @@ const Header: React.FC = () => {
                           {/*  <img src={logo} alt="" />*/}
                           {/*</Link>*/}
                           <Link to="/" onClick={changePage}>
-                            <h1 className={"logo-text"}>KidQuizIt</h1>
+                            <h1 className={"logoText"}>KidQuizIt</h1>
                             {/*<img src={logo} className="logo" alt="" />*/}
                           </Link>
                           <div className="burger_links">
