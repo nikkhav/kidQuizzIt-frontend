@@ -167,7 +167,6 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
         src={imageSrc}
         sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
         alt={altText}
-        style={{ width: "100%", height: "auto" }}
       />
       <h2 dangerouslySetInnerHTML={{ __html: item.title }}></h2>
     </Link>
