@@ -1,6 +1,6 @@
 .tale_card {
   width: 100%;
-  height: 300px;
+  height: 430px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@
   width: 100%;
   padding: 5px 10px;
   text-align: center;
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 500;
   font-family: Fira Sans, sans-serif;
   color: #1d1d1b;
@@ -49,9 +49,9 @@
 }
 @media screen and (max-width: 480px) {
   .tale_card {
-    height: 320px;
+    height: 370px;
   }
   .tale_card h2 {
-    font-size: 18px;
+    font-size: 17px;
   }
 }

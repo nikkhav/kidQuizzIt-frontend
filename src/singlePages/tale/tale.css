@@ -71,5 +71,7 @@
   .tale p {
     font-size: 18px;
     line-height: 28px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
