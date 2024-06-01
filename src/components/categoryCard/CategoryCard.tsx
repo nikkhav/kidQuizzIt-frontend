@@ -21,6 +21,10 @@ import whyMechanics from "../../images/categoriesImages/why_mechanics.webp";
 import whyScience from "../../images/categoriesImages/why_science.webp";
 import whyDinosaurs from "../../images/categoriesImages/why_dinosaurs.webp";
 import puzzle_gifts from "../../images/categoriesImages/puzzle_gifts.webp";
+import puzzle_patern from "../../images/categoriesImages/puzzle_pattern.webp";
+import puzzle_mystery from "../../images/categoriesImages/puzzle_mystery.webp";
+import puzzle_labyrinths from "../../images/categoriesImages/puzzle_labyrinths.webp";
+import puzzle_ninjas from "../../images/categoriesImages/puzzle_ninjas.webp";
 import fairy_adventure from "../../images/categoriesImages/fairy_adventure.webp";
 import fairy_fables from "../../images/categoriesImages/fairy_fables.webp";
 import fairy_romance from "../../images/categoriesImages/fairy_romance.webp";
@@ -110,6 +114,18 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
     if (parent_id === 4) {
       if (category_id === 21) {
         return puzzle_gifts;
+      }
+      if (category_id === 54) {
+        return puzzle_patern;
+      }
+      if (category_id === 55) {
+        return puzzle_mystery;
+      }
+      if (category_id === 56) {
+        return puzzle_labyrinths;
+      }
+      if (category_id === 57) {
+        return puzzle_ninjas;
       }
     }
 
