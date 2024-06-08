@@ -10,7 +10,7 @@ import { FaXmark } from "react-icons/fa6";
 import { disableScroll, enableScroll } from "../../hooks/scrool";
 import { IoGameController } from "react-icons/io5";
 import { FaPlayCircle } from "react-icons/fa";
-import { MdOutlinePets } from "react-icons/md";
+import { MdOutlinePets, MdTour } from "react-icons/md";
 import { ImTarget } from "react-icons/im";
 import { MdContactPhone } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -117,6 +117,7 @@ const Header: React.FC = () => {
                 </Link>
                 <nav>
                   {categories.map((cat: categoryData, index) => {
+                    if (cat.title.includes("Logic Puzzles")) return;
                     return (
                       <>
                         <div
@@ -133,8 +134,10 @@ const Header: React.FC = () => {
                             <ImTarget />
                           ) : index == 4 ? (
                             <GiFairy />
-                          ) : (
+                          ) : index == 5 ? (
                             <IoGameController />
+                          ) : (
+                            <MdTour />
                           )}
                           <h3
                             dangerouslySetInnerHTML={{ __html: cat.title }}
@@ -199,6 +202,8 @@ const Header: React.FC = () => {
                             <div className="burger_links_cat">
                               {categories.map(
                                 (cat: categoryData, index: number) => {
+                                  if (cat.title.includes("Logic Puzzles"))
+                                    return;
                                   return (
                                     <div
                                       key={`${cat.id}${cat.title}${index}`}

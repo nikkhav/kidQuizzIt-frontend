@@ -36,6 +36,10 @@ import games_family from "../../images/categoriesImages/games_family.webp";
 import games_active from "../../images/categoriesImages/games_active.webp";
 import games_sport from "../../images/categoriesImages/games_sport.webp";
 import games_table from "../../images/categoriesImages/games_table.webp";
+import tours_adventure from "../../images/categoriesImages/tours_adventure.webp";
+import tours_city from "../../images/categoriesImages/tours_city.webp";
+import tours_history from "../../images/categoriesImages/tours_history.webp";
+import tours_natural from "../../images/categoriesImages/tours_natural.webp";
 
 type CategoryCardProps = {
   item: childCategory;
@@ -49,6 +53,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
     // parent_id: 4 = logic
     // parent_id: 40 = fairy
     // parent_id: 41 = game
+    // parent_id: 58 = tour
     const parent_id = item.parent_id;
     const category_id = item.id;
 
@@ -165,6 +170,21 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
       }
       if (category_id === 51) {
         return games_table;
+      }
+    }
+
+    if (parent_id === 58) {
+      if (category_id === 80) {
+        return tours_adventure;
+      }
+      if (category_id === 83) {
+        return tours_city;
+      }
+      if (category_id === 81) {
+        return tours_history;
+      }
+      if (category_id === 82) {
+        return tours_natural;
       }
     }
 

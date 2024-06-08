@@ -101,6 +101,7 @@ const MySwiper: React.FC = () => {
     <>
       {categories &&
         categories.map((category: categoryData) => {
+          if (category.title.includes("Logic Puzzles")) return;
           return (
             <React.Fragment key={category.id}>
               <h2 className="swiper_title">{extractTags(category.title)}</h2>

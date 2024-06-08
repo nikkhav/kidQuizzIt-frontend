@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Why from "../../singlePages/why/Why";
 import Game from "../../singlePages/game/Game";
 import Tale from "../../singlePages/tale/Tale";
+import Tour from "../../singlePages/tour/Tour.tsx";
 
 const SinglePage = () => {
   const params = useParams();
@@ -20,9 +21,13 @@ const SinglePage = () => {
     <Game itemId={Id} itemParentId={parentId} />
   ) : parentId == 40 ? (
     <Tale itemId={Id} itemParentId={parentId} />
-  ) : (
-    <Difference itemId={Id} itemParentId={parentId} />
-  );
+  ) : parentId == 58 ? (
+    <Tour itemId={Id} itemParentId={parentId} />
+  ) : null;
+
+  // ) : (
+  //   <Difference itemId={Id} itemParentId={parentId} />
+  // );
 };
 
 export default SinglePage;
