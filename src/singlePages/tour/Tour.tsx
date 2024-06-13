@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { fetchWhy } from "../../store/actions/whyAction";
-import Loading from "../../components/loading/Loading";
 import { useNavigate } from "react-router-dom";
 import styles from "./tour.module.css";
 import axios from "../../axios";
@@ -14,18 +11,49 @@ type TourProps = {
 
 const Tour: React.FC<TourProps> = ({ itemId, itemParentId }) => {
   const [tour, setTour] = useState<tourData>();
-  // const dispatch = useAppDispatch();
-  // const { why, errorWhy, loadingWhy } = useAppSelector((state) => state.why);
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
-  // useEffect(() => {
-  //   fetchWhy()(dispatch);
-  // }, [dispatch]);
+  const formatContent = (content: any) => {
+    const lines = content.split("\n");
+
+    // Map each line to check for headers and list items
+    const formattedLines = lines.map((line: string) => {
+      // Replace markdown headers with HTML headers with margin styles
+      if (line.startsWith("### ")) {
+        return `<h3 style="margin-top: 16px; margin-bottom: 10px;">${line.slice(
+          4,
+        )}</h3>`;
+      } else if (line.startsWith("## ")) {
+        return `<h2 style="margin-top: 24px;margin-bottom: 10px;">${line.slice(
+          3,
+        )}</h2>`;
+      } else if (line.startsWith("# ")) {
+        return `<h1 style="margin-top: 32px;margin-bottom: 10px; line-height: 1">${line.slice(
+          2,
+        )}</h1>`;
+      }
+
+      if (line.match(/^\d+\./)) {
+        return `<div>${line}</div>`;
+      }
+
+      return line;
+    });
+
+    // Join the lines back together
+    return formattedLines.join("\n");
+  };
   const getTour = async () => {
     try {
       const response = await axios.get("tour");
-      setTour(response.data);
+      // Format content descriptions before setting the state
+      const formattedData = response.data.map((item: any) => ({
+        ...item,
+        description1: formatContent(item.description1),
+        description2: formatContent(item.description2),
+      }));
+      setTour(formattedData);
     } catch (error) {
       console.error(error);
     }
