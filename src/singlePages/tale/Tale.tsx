@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { fetchGame } from "../../store/actions/gameAction";
-import Loading from "../../components/loading/Loading";
-import { fairyData } from "../../types/fairyData";
+import axios from "../../axios";
 import "./tale.css";
 
 type TaleProps = {
@@ -12,50 +8,49 @@ type TaleProps = {
 };
 
 const Tale: React.FC<TaleProps> = ({ itemId, itemParentId }) => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const { fairy, loadingFairy, errorFairy } = useAppSelector(
-    (state) => state.fairy,
-  );
-  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  const [tales, setTales] = useState([]);
+  const [tale, setTale] = useState({ title: "", image: "", description: "" });
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  useEffect(() => {
-    fetchGame()(dispatch);
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (fairy) {
-      const index = fairy.findIndex(
-        (item) =>
+  const getTales = async () => {
+    try {
+      const response = await axios.get("tale");
+      setTales(response.data);
+      const initialIndex = response.data.findIndex(
+        (item: any) =>
           item.category.parent_id === itemParentId && item.id === itemId,
       );
-      setCurrentIndex(index);
+      setCurrentIndex(initialIndex);
+    } catch (error) {
+      console.error(error);
     }
-  }, [fairy, itemId, itemParentId]);
+  };
+
+  useEffect(() => {
+    getTales();
+  }, []);
+
+  useEffect(() => {
+    if (tales.length > 0 && currentIndex !== null) {
+      setTale(tales[currentIndex]);
+    }
+  }, [currentIndex, tales]);
 
   const handleNext = () => {
-    if (fairy && currentIndex !== null && currentIndex < fairy.length - 1) {
-      const nextItem = fairy[currentIndex + 1];
-      navigate(`/single-page/${nextItem.category.parent_id}/${nextItem.id}`);
+    if (currentIndex !== null && currentIndex < tales.length - 1) {
+      setCurrentIndex(currentIndex + 1);
     }
   };
 
   const handlePrev = () => {
-    if (fairy && currentIndex !== null && currentIndex > 0) {
-      const prevItem = fairy[currentIndex - 1];
-      navigate(`/single-page/${prevItem.category.parent_id}/${prevItem.id}`);
+    if (currentIndex !== null && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
     }
   };
 
-  if (loadingFairy) return <Loading />;
-  if (errorFairy) return <p>{errorFairy}</p>;
-  if (!fairy || currentIndex === null || !fairy[currentIndex])
-    return <p>No tale found</p>;
+  if (!tale) return <p>No tale found</p>;
 
-  const currentItem = fairy[currentIndex];
-  let displayTitle = currentItem.title;
-  // Remove <p> tags if present in the title
-  displayTitle = displayTitle.replace(/<\/?p>/g, "");
+  let displayTitle = tale.title.replace(/<\/?p>/g, "");
 
   return (
     <div className="container">
@@ -64,13 +59,13 @@ const Tale: React.FC<TaleProps> = ({ itemId, itemParentId }) => {
           className="tale_title"
           dangerouslySetInnerHTML={{ __html: displayTitle }}
         ></h1>
-        <img src={currentItem.image} alt={currentItem.title} />
-        <p dangerouslySetInnerHTML={{ __html: currentItem.description }}></p>
+        {tale && <img src={tale.image} alt={tale.title} />}
+        {tale && <p dangerouslySetInnerHTML={{ __html: tale.description }}></p>}
         <div className="navigation">
           {currentIndex > 0 && (
             <button onClick={handlePrev}>Previous Tale</button>
           )}
-          {currentIndex < fairy.length - 1 && (
+          {currentIndex < tales.length - 1 && (
             <button onClick={handleNext}>Next Tale</button>
           )}
         </div>
