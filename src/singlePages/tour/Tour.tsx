@@ -14,36 +14,47 @@ const Tour: React.FC<TourProps> = ({ itemId, itemParentId }) => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
-  const formatContent = (content: any) => {
+  const formatContent = (content: string) => {
     const lines = content.split("\n");
 
-    // Map each line to check for headers and list items
+    // Map each line to check for headers, list items, and bold text
     const formattedLines = lines.map((line: string) => {
+      // Removing all HTML tags for safety and clarity
+      line = line.replace(/<\/?[^>]+(>|$)/g, "");
+
       // Replace markdown headers with HTML headers with margin styles
       if (line.startsWith("### ")) {
         return `<h3 style="margin-top: 16px; margin-bottom: 10px;">${line.slice(
           4,
         )}</h3>`;
       } else if (line.startsWith("## ")) {
-        return `<h2 style="margin-top: 24px;margin-bottom: 10px;">${line.slice(
+        return `<h2 style="margin-top: 24px; margin-bottom: 10px;">${line.slice(
           3,
         )}</h2>`;
       } else if (line.startsWith("# ")) {
-        return `<h1 style="margin-top: 32px;margin-bottom: 10px; line-height: 1">${line.slice(
+        return `<h1 style="margin-top: 32px; margin-bottom: 10px; line-height: 1">${line.slice(
           2,
         )}</h1>`;
       }
 
+      // Handle numbered lists by wrapping in divs, preserving list formatting
       if (line.match(/^\d+\./)) {
+        // Apply bold text conversion within list items
+        line = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
         return `<div>${line}</div>`;
       }
+
+      // Convert markdown bold (**text**) to HTML bold (<strong>text</strong>)
+      // This conversion is applied to all lines, ensuring no bold markers are missed
+      line = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
       return line;
     });
 
-    // Join the lines back together
+    // Join the lines back together into a single string
     return formattedLines.join("\n");
   };
+
   const getTour = async () => {
     try {
       const response = await axios.get("tour");
