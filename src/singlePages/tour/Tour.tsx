@@ -15,43 +15,41 @@ const Tour: React.FC<TourProps> = ({ itemId, itemParentId }) => {
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
 
   const formatContent = (content: string) => {
+    // Split the content into lines
     const lines = content.split("\n");
 
-    // Map each line to check for headers, list items, and bold text
-    const formattedLines = lines.map((line: string) => {
-      // Removing all HTML tags for safety and clarity
+    // Process each line to handle markdown-like headers and ordered lists
+    const formattedLines = lines.map((line) => {
+      // Remove HTML tags for safety and clarity
       line = line.replace(/<\/?[^>]+(>|$)/g, "");
 
-      // Replace markdown headers with HTML headers with margin styles
-      if (line.startsWith("### ")) {
-        return `<h3 style="margin-top: 16px; margin-bottom: 10px;">${line.slice(
-          4,
-        )}</h3>`;
-      } else if (line.startsWith("## ")) {
-        return `<h2 style="margin-top: 24px; margin-bottom: 10px;">${line.slice(
-          3,
-        )}</h2>`;
-      } else if (line.startsWith("# ")) {
-        return `<h1 style="margin-top: 32px; margin-bottom: 10px; line-height: 1">${line.slice(
-          2,
-        )}</h1>`;
-      }
+      // Convert Markdown headers to HTML headers
+      // @ts-ignore
+      line = line.replace(/(#+) (.+?)(?=( #|$))/g, (match, hashes, text) => {
+        const level = hashes.length;
+        switch (level) {
+          case 1:
+            return `<h1 style="margin-top: 32px; margin-bottom: 10px; line-height: 1;">${text}</h1>`;
+          case 2:
+            return `<h2 style="margin-top: 24px; margin-bottom: 10px;">${text}</h2>`;
+          case 3:
+            return `<h3 style="margin-top: 16px; margin-bottom: 10px;">${text}</h3>`;
+          default:
+            return `<h${Math.min(level, 6)}>${text}</h${Math.min(level, 6)}>`; // Cap at h6 for HTML standards
+        }
+      });
 
-      // Handle numbered lists by wrapping in divs, preserving list formatting
+      // Handle ordered lists, applying a consistent font size
       if (line.match(/^\d+\./)) {
-        // Apply bold text conversion within list items
-        line = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-        return `<div>${line}</div>`;
+        line = `<div style="font-size: 16px;">${line}</div>`;
       }
 
       // Convert markdown bold (**text**) to HTML bold (<strong>text</strong>)
-      // This conversion is applied to all lines, ensuring no bold markers are missed
       line = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
       return line;
     });
 
-    // Join the lines back together into a single string
     return formattedLines.join("\n");
   };
 
