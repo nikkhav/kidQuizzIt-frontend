@@ -213,21 +213,29 @@ const Catalog: React.FC = () => {
                 {countries.map((country) => (
                   <div key={country.id} className="country">
                     <label>{country.name}</label>
-                    {country.cities.map((city: any) => (
-                      <div key={city.id} className="city">
-                        <input
-                          type="checkbox"
-                          id={city.name}
-                          value={city.name}
-                          onChange={handleCityChange}
-                        />
-                        <label htmlFor={city.name}>{city.name}</label>
-                      </div>
-                    ))}
+                    {Array.from(
+                      new Set(country.cities.map((city: any) => city.name)),
+                    ).map((cityName) => {
+                      const city = country.cities.find(
+                        (c: any) => c.name === cityName,
+                      );
+                      return (
+                        <div key={city.id} className="city">
+                          <input
+                            type="checkbox"
+                            id={city.name}
+                            value={city.name}
+                            onChange={handleCityChange}
+                          />
+                          <label htmlFor={city.name}>{city.name}</label>
+                        </div>
+                      );
+                    })}
                   </div>
                 ))}
               </div>
             )}
+
             <div
               className={`${catParentId === "58" ? "catalog-tour-col" : ""}`}
             >
