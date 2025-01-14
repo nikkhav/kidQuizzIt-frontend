@@ -10,11 +10,10 @@ import { FaXmark } from "react-icons/fa6";
 import { disableScroll, enableScroll } from "../../hooks/scrool";
 import { IoGameController } from "react-icons/io5";
 import { FaPlayCircle } from "react-icons/fa";
-import { MdOutlinePets, MdTour } from "react-icons/md";
-import { ImTarget } from "react-icons/im";
+import { MdTour } from "react-icons/md";
 import { MdContactPhone } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
-import { GiFairy } from "react-icons/gi";
+import { GiPaintBrush } from "react-icons/gi";
 import { BsPatchQuestionFill } from "react-icons/bs";
 
 import { IoIosArrowDown } from "react-icons/io";
@@ -117,28 +116,22 @@ const Header: React.FC = () => {
                 </Link>
                 <nav>
                   {categories.map((cat: categoryData, index) => {
-                    if (cat.title.includes("Logic Puzzles")) return;
+                    const icons = [
+                      <FaPlayCircle />,
+                      <BsPatchQuestionFill />,
+                      <IoGameController />,
+                      <MdTour />,
+                      <GiPaintBrush />,
+                    ];
+
+                    const Icon = icons[index] || <MdTour />;
                     return (
                       <>
                         <div
                           key={`${cat.title}${index + 1}${cat.id}`}
                           className="nav_item"
                         >
-                          {index == 0 ? (
-                            <FaPlayCircle />
-                          ) : index == 1 ? (
-                            <MdOutlinePets />
-                          ) : index == 2 ? (
-                            <BsPatchQuestionFill />
-                          ) : index == 3 ? (
-                            <ImTarget />
-                          ) : index == 4 ? (
-                            <GiFairy />
-                          ) : index == 5 ? (
-                            <IoGameController />
-                          ) : (
-                            <MdTour />
-                          )}
+                          {Icon}
                           <h3
                             dangerouslySetInnerHTML={{ __html: cat.title }}
                           ></h3>

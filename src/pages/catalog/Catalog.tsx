@@ -75,7 +75,7 @@ const Catalog: React.FC = () => {
         gameRes = await axios.get("game");
         setGames(gameRes.data);
       }
-      if (catParentId === "58") {
+      if (catParentId === "52") {
         tourRes = await axios.get("tour");
         setTours(tourRes.data);
         collectCountriesAndCities(tourRes.data);
@@ -205,10 +205,10 @@ const Catalog: React.FC = () => {
         <>
           <div
             className={`container ${
-              catParentId === "58" ? "catalog-tour-row" : ""
+              catParentId === "52" ? "catalog-tour-row" : ""
             }`}
           >
-            {catParentId === "58" && (
+            {catParentId === "52" && (
               <div className="city-filter-container">
                 {countries.map((country) => (
                   <div key={country.id} className="country">
@@ -237,7 +237,7 @@ const Catalog: React.FC = () => {
             )}
 
             <div
-              className={`${catParentId === "58" ? "catalog-tour-col" : ""}`}
+              className={`${catParentId === "52" ? "catalog-tour-col" : ""}`}
             >
               <SearchInput searchProd={searchProd} />
               <div className="catalog">
@@ -285,7 +285,7 @@ const Catalog: React.FC = () => {
                           item={card}
                         />
                       );
-                    } else if (card.category.parent_id === 58) {
+                    } else if (card.category.parent_id === 52) {
                       return (
                         <TourCard
                           key={`${card.category.parent_id}/${card.id}`}

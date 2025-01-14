@@ -53,7 +53,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
     // parent_id: 4 = logic
     // parent_id: 40 = fairy
     // parent_id: 41 = game
-    // parent_id: 58 = tour
+    // parent_id: 52 = tour
     const parent_id = item.parent_id;
     const category_id = item.id;
 
@@ -173,17 +173,17 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
       }
     }
 
-    if (parent_id === 58) {
-      if (category_id === 80) {
+    if (parent_id === 52) {
+      if (category_id === 53) {
         return tours_adventure;
       }
-      if (category_id === 83) {
+      if (category_id === 56) {
         return tours_city;
       }
-      if (category_id === 81) {
+      if (category_id === 54) {
         return tours_history;
       }
-      if (category_id === 82) {
+      if (category_id === 55) {
         return tours_natural;
       }
     }

@@ -1,6 +1,5 @@
 import Questions from "../../singlePages/questions/Questions";
 import Coloration from "../../singlePages/coloration/Coloration";
-import Difference from "../../singlePages/difference/Difference";
 import { useParams } from "react-router-dom";
 import Why from "../../singlePages/why/Why";
 import Game from "../../singlePages/game/Game";
@@ -21,7 +20,7 @@ const SinglePage = () => {
     <Game itemId={Id} itemParentId={parentId} />
   ) : parentId == 40 ? (
     <Tale itemId={Id} itemParentId={parentId} />
-  ) : parentId == 58 ? (
+  ) : parentId == 52 ? (
     <Tour itemId={Id} itemParentId={parentId} />
   ) : null;
 
