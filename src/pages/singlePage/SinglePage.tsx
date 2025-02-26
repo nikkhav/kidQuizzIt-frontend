@@ -5,6 +5,7 @@ import Why from "../../singlePages/why/Why";
 import Game from "../../singlePages/game/Game";
 import Tale from "../../singlePages/tale/Tale";
 import Tour from "../../singlePages/tour/Tour.tsx";
+import ArtsAndCrafts from "../../singlePages/artsAndCrafts/ArtsAndCrafts.tsx";
 
 const SinglePage = () => {
   const params = useParams();
@@ -22,6 +23,8 @@ const SinglePage = () => {
     <Tale itemId={Id} itemParentId={parentId} />
   ) : parentId == 52 ? (
     <Tour itemId={Id} itemParentId={parentId} />
+  ) : parentId == 58 ? (
+    <ArtsAndCrafts itemId={Id} itemParentId={parentId} />
   ) : null;
 
   // ) : (

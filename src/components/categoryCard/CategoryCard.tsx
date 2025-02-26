@@ -54,6 +54,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
     // parent_id: 40 = fairy
     // parent_id: 41 = game
     // parent_id: 52 = tour
+    // parent_id: 58 = Arts and Crafts
     const parent_id = item.parent_id;
     const category_id = item.id;
 

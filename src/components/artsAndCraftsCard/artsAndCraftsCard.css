@@ -1,0 +1,63 @@
+.arts_and_crafts_card {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
+    -webkit-box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
+    -moz-box-shadow: -1px 6px 48px -34px rgba(0, 0, 0, 0.74);
+    transition: 0.4s;
+}
+
+.arts_and_crafts_card:hover {
+    box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
+    -webkit-box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
+    -moz-box-shadow: -1px 6px 48px -16px rgba(0, 0, 0, 0.74);
+}
+
+.arts_and_crafts_card img {
+    height: 80%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.arts_and_crafts_card h2 {
+    width: 100%;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: Fira Sans, sans-serif;
+    color: #1d1d1b;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .arts_and_crafts_card {
+        height: 320px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .arts_and_crafts_card {
+        height: 320px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .arts_and_crafts_card {
+        height: 320px;
+    }
+    .arts_and_crafts_card h2 {
+        font-size: 18px;
+    }
+}

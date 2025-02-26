@@ -10,6 +10,7 @@ import quizReducer from "./slices/quizSlice";
 import catReducer from "./slices/catSlice";
 import fairyReducer from "./slices/fairySlice";
 import gameReducer from "./slices/gameSlice";
+import artsAndCraftsReducer from "./slices/artsAndCraftsSlice";
 
 const rootReducer = combineReducers({
   about: aboutReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   cat: catReducer,
   fairy: fairyReducer,
   game: gameReducer,
+  artsAndCrafts: artsAndCraftsReducer,
 });
 
 export function setupStore() {

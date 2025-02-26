@@ -12,6 +12,7 @@ import TaleCard from "../../components/taleCard/TaleCard";
 import GameCard from "../../components/gameCard/GameCard";
 import axios from "../../axios";
 import TourCard from "../../components/tourCard/TourCard";
+import ArtsAndCraftCard from "../../components/artsAndCraftsCard/ArtsAndCraftsCard.tsx";
 
 const Catalog: React.FC = () => {
   const params = useParams();
@@ -29,6 +30,7 @@ const Catalog: React.FC = () => {
   const [fairyTales, setFairyTales] = useState<allData[] | null>(null);
   const [games, setGames] = useState<allData[] | null>(null);
   const [tours, setTours] = useState<allData[] | null>(null);
+  const [artsAndCrafts, setArtsAndCrafts] = useState<allData[] | null>(null);
 
   const [selectedCities, setSelectedCities] = useState<string[]>([]);
 
@@ -49,7 +51,8 @@ const Catalog: React.FC = () => {
         whyRes,
         fairyRes,
         gameRes,
-        tourRes;
+        tourRes,
+        artsAndCraftsRes;
 
       if (catParentId === "1") {
         quizRes = await axios.get("quiz");
@@ -80,6 +83,10 @@ const Catalog: React.FC = () => {
         setTours(tourRes.data);
         collectCountriesAndCities(tourRes.data);
       }
+      if (catParentId === "58") {
+        artsAndCraftsRes = await axios.get("arts_and_crafts");
+        setArtsAndCrafts(artsAndCraftsRes.data);
+      }
     } catch (error) {
       console.error("Error fetching data", error);
     }
@@ -108,7 +115,8 @@ const Catalog: React.FC = () => {
       whyQuestions ||
       fairyTales ||
       games ||
-      tours
+      tours ||
+      artsAndCrafts
     ) {
       let prods: allData[] = [];
       if (quizzes) prods = [...prods, ...quizzes];
@@ -118,6 +126,7 @@ const Catalog: React.FC = () => {
       if (fairyTales) prods = [...prods, ...fairyTales];
       if (games) prods = [...prods, ...games];
       if (tours) prods = [...prods, ...tours];
+      if (artsAndCrafts) prods = [...prods, ...artsAndCrafts];
 
       if (catId && catParentId) {
         const newArr = prods.filter(
@@ -150,6 +159,7 @@ const Catalog: React.FC = () => {
     fairyTales,
     games,
     tours,
+    artsAndCrafts,
     catId,
     catParentId,
   ]);
@@ -288,6 +298,13 @@ const Catalog: React.FC = () => {
                     } else if (card.category.parent_id === 52) {
                       return (
                         <TourCard
+                          key={`${card.category.parent_id}/${card.id}`}
+                          item={card}
+                        />
+                      );
+                    } else if (card.category.parent_id === 58) {
+                      return (
+                        <ArtsAndCraftCard
                           key={`${card.category.parent_id}/${card.id}`}
                           item={card}
                         />
