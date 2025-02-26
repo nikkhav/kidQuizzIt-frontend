@@ -16,11 +16,11 @@ const Footer: React.FC = () => {
               {/*<img src={logo} className="logo" alt="" />*/}
             </Link>
             <div className={styles.foot_3}>
-              <Link to="/privacy">Privacy and Policy</Link>
+              <Link to="/privacy">Privacy Policy</Link>
               <Link to="/terms">Terms and Conditions</Link>
             </div>
             <div className={styles.copyright}>
-              <h2>Copyright © YouGifted, LLC. All rights reserved</h2>
+              <h2>Copyright © YouGifted, LLC. All rights reserved 2025</h2>
               <a
                 className={styles.mail}
                 href={"mailto:commercial@kidquizit.com"}
