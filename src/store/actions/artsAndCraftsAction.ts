@@ -9,7 +9,7 @@ export const fetchArtsAndCrafts = () => {
       const response = await axios.get("arts_and_crafts");
       dispatch(artsAndCraftsSlice.actions.fetchingSuccess(response.data));
     } catch (e) {
-      dispatch(artsAndCraftsSlice.actions.fechingError(e as Error));
+      dispatch(artsAndCraftsSlice.actions.fetchingError(e as Error));
     }
   };
 };
