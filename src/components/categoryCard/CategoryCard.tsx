@@ -8,6 +8,7 @@ import quizBellowed from "../../images/categoriesImages/quiz_bellowed.webp";
 import quizHistory from "../../images/categoriesImages/quiz_history.webp";
 import quizGeography from "../../images/categoriesImages/quiz_geography.webp";
 import quizSpace from "../../images/categoriesImages/quiz_space.webp";
+import quizScience from "../../images/categoriesImages/quiz_science.webp";
 import colouringsAnimals from "../../images/categoriesImages/colourings_animals.webp";
 import colouringsCartoons from "../../images/categoriesImages/colourings_cartoons.webp";
 import colouringsGames from "../../images/categoriesImages/colourings_games.webp";
@@ -30,16 +31,20 @@ import fairy_fables from "../../images/categoriesImages/fairy_fables.webp";
 import fairy_romance from "../../images/categoriesImages/fairy_romance.webp";
 import fairy_historical from "../../images/categoriesImages/fairy_historical.webp";
 import fairy_friendship from "../../images/categoriesImages/fairy_friendship.webp";
-import games_music from "../../images/categoriesImages/games_music.webp";
 import games_brain from "../../images/categoriesImages/games_brain.webp";
 import games_family from "../../images/categoriesImages/games_family.webp";
 import games_active from "../../images/categoriesImages/games_active.webp";
 import games_sport from "../../images/categoriesImages/games_sport.webp";
 import games_table from "../../images/categoriesImages/games_table.webp";
+import games_music from "../../images/categoriesImages/games_music.webp";
 import tours_adventure from "../../images/categoriesImages/tours_adventure.webp";
 import tours_city from "../../images/categoriesImages/tours_city.webp";
 import tours_history from "../../images/categoriesImages/tours_history.webp";
 import tours_natural from "../../images/categoriesImages/tours_natural.webp";
+import arts_diy from "../../images/categoriesImages/arts_diy.webp";
+import arts_sports from "../../images/categoriesImages/arts_sports.webp";
+import arts_hobbies from "../../images/categoriesImages/arts_hobbies.webp";
+import arts_special from "../../images/categoriesImages/arts_special_day.webp";
 
 type CategoryCardProps = {
   item: childCategory;
@@ -73,6 +78,9 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
       }
       if (category_id === 15) {
         return quizSpace;
+      }
+      if (category_id === 57) {
+        return quizScience;
       }
     }
     if (parent_id === 2) {
@@ -154,22 +162,22 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
     }
 
     if (parent_id === 41) {
-      if (category_id === 44) {
+      if (category_id === 42) {
         return games_music;
       }
-      if (category_id === 45) {
+      if (category_id === 44) {
         return games_brain;
       }
-      if (category_id === 48) {
+      if (category_id === 45) {
         return games_family;
       }
-      if (category_id === 49) {
+      if (category_id === 46) {
         return games_active;
       }
-      if (category_id === 50) {
+      if (category_id === 47) {
         return games_sport;
       }
-      if (category_id === 51) {
+      if (category_id === 48) {
         return games_table;
       }
     }
@@ -186,6 +194,21 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ item }) => {
       }
       if (category_id === 55) {
         return tours_natural;
+      }
+    }
+
+    if (parent_id === 58) {
+      if (category_id === 59) {
+        return arts_diy;
+      }
+      if (category_id === 60) {
+        return arts_sports;
+      }
+      if (category_id === 61) {
+        return arts_hobbies;
+      }
+      if (category_id === 62) {
+        return arts_special;
       }
     }
 
